@@ -2,7 +2,7 @@ export const CONTACT = {
   instagram: "https://www.instagram.com/blogdapriscilaa/",
   instagramHandle: "@blogdapriscilaa",
   email: "EMAIL_DA_PRISCILA",
-  whatsapp: "55DDDNUMERO",
+  whatsapp: "5511930303849",
   tiktok: "",
 } as const;
 
