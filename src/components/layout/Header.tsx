@@ -1,19 +1,17 @@
 "use client";
 
-import { Instagram, Menu, Music2, X } from "lucide-react";
+import { Instagram, Menu, MessageCircle, Music2, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CONTACT } from "@/config/contact";
+import { CONTACT, whatsappDefaultMessage, whatsappUrl } from "@/config/contact";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const links = [
   ["Início", "/#inicio"],
   ["Sobre mim", "/#sobre"],
   ["Portfólio", "/#portfolio"],
-  ["Media Kit", "/portfolio"],
-  ["Reels", "/#reels"],
-  ["Galeria", "/#galeria"],
-  ["Parcerias", "/#parcerias"],
-  ["Serviços", "/#servicos"],
+  ["Mídia Kit", "/portfolio"],
+  ["Marcas", "/#parcerias"],
   ["Contato", "/#contato"],
 ];
 
@@ -22,7 +20,14 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
   }, [open]);
 
   return (
@@ -32,20 +37,29 @@ export function Header() {
           Blog da <span className="italic text-rose-700">Priscila</span>
         </Link>
         <nav className="hidden items-center gap-5 xl:flex" aria-label="Navegação principal">
-          {links.map(([label, href]) => <Link key={href} href={href} className="nav-link">{label}</Link>)}
-          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1"><Instagram size={14} /></a>
-          {CONTACT.tiktok ? <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1"><Music2 size={14} /></a> : <span className="nav-link inline-flex items-center gap-1 opacity-40"><Music2 size={14} /></span>}
+          {links.map(([label, href]) => <Link key={href} href={href} prefetch={href === "/portfolio" ? false : undefined} className="nav-link">{label}</Link>)}
+          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1" aria-label="Instagram da Priscila — abre em nova aba"><Instagram size={14} /></a>
+          {CONTACT.tiktok && <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1" aria-label="TikTok da Priscila — abre em nova aba"><Music2 size={14} /></a>}
         </nav>
-        <Link href="/#contato" className="button-primary hidden lg:inline-flex">Solicitar parceria</Link>
-        <button className="grid size-11 place-items-center rounded-full border border-brown/20 xl:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Fechar menu" : "Abrir menu"}>
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="hidden items-center gap-4 xl:flex">
+          <LanguageSwitcher />
+          <Link href="/#contato" className="button-primary">Solicitar parceria</Link>
+        </div>
+        <div className="flex items-center gap-2 xl:hidden">
+          <a href={whatsappUrl(whatsappDefaultMessage)} target="_blank" rel="noopener noreferrer" className="grid size-10 place-items-center rounded-full bg-[#25D366] text-white shadow sm:hidden" aria-label="Solicitar orçamento pelo WhatsApp — abre em nova aba">
+            <MessageCircle size={20} />
+          </a>
+          <button className="grid size-11 place-items-center rounded-full border border-brown/20" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Fechar menu" : "Abrir menu"}>
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
       {open && (
-        <nav id="mobile-menu" className="absolute inset-x-0 top-20 h-[calc(100vh-5rem)] bg-cream px-6 py-8 xl:hidden" aria-label="Navegação móvel">
+        <nav id="mobile-menu" className="absolute inset-x-0 top-20 h-[calc(100dvh-5rem)] overflow-y-auto bg-cream px-6 py-6 pb-[max(2rem,env(safe-area-inset-bottom))] xl:hidden" aria-label="Navegação móvel">
           <div className="mx-auto flex max-w-lg flex-col">
-            {links.map(([label, href], index) => <Link key={href} href={href} onClick={() => setOpen(false)} className="border-b border-brown/10 py-4 font-display text-2xl"><span className="mr-4 text-xs text-rose-700">0{index + 1}</span>{label}</Link>)}
-            <Link href="/#contato" onClick={() => setOpen(false)} className="button-primary mt-8 justify-center">Solicitar parceria</Link>
+            <div className="mb-3"><LanguageSwitcher /></div>
+            {links.map(([label, href], index) => <Link key={href} href={href} prefetch={href === "/portfolio" ? false : undefined} onClick={() => setOpen(false)} className="border-b border-brown/10 py-3 font-display text-xl"><span className="mr-4 text-xs text-rose-700">{String(index + 1).padStart(2, "0")}</span>{label}</Link>)}
+            <Link href="/#contato" onClick={() => setOpen(false)} className="button-primary mt-6 justify-center">Solicitar parceria</Link>
           </div>
         </nav>
       )}

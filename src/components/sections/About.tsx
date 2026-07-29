@@ -6,10 +6,10 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const highlights = [
-  { label: "Beleza & Skincare", icon: "✨" },
-  { label: "Maquiagem", icon: "💄" },
-  { label: "Hair Care", icon: "💇" },
-  { label: "Bem-estar", icon: "🧖" },
+  { label: "Beleza", icon: "✨" },
+  { label: "Skincare", icon: "🧴" },
+  { label: "Cabelos", icon: "💇" },
+  { label: "Autocuidado", icon: "🧖" },
 ];
 
 export function About() {
@@ -20,7 +20,7 @@ export function About() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sand shadow-[0_20px_60px_rgba(88,58,47,.12)]">
             <Image
               src={resolveMediaPath("/images/instagram/2026-07-21_17-21-56_UTC.jpg")}
-              alt="Foto da Priscila - criadora de conteúdo UGC"
+              alt="Priscila Almeida, criadora de conteúdo UGC"
               fill
               sizes="(max-width: 1024px) 90vw, 38vw"
               className="object-cover object-center"
@@ -41,20 +41,18 @@ export function About() {
           </a>
         </Reveal>
         <Reveal>
-          <SectionHeading eyebrow="Sobre mim" title="Prazer, eu sou a Priscila" />
+          <SectionHeading eyebrow="Sobre mim" title="Olá! Sou Priscila Almeida" />
           <div className="mt-8 space-y-5 text-base leading-8 text-muted md:text-lg">
             <p>
-              Sou criadora de conteúdo UGC de Guarulhos, SP. Minha missão é simplificar sua rotina de beleza, autocuidado e bem-estar com conteúdos leves, verdadeiros e cheios de personalidade.
+              Tenho 39 anos, moro em Guarulhos, São Paulo, e sou apaixonada pelo universo da beleza, do skincare, dos cabelos e do autocuidado.
             </p>
             <p>
-              Compartilho experiências reais com produtos de skincare, maquiagem, hair care e muito mais. Cada parceria recebe um olhar cuidadoso, respeitando o tom e os objetivos da marca, enquanto mantenho uma comunicação próxima e autêntica com o público.
+              Minha página é um espaço onde compartilho dicas, tutoriais e resenhas de produtos para ajudar minha audiência a se sentir mais confiante. Quero mostrar à minha comunidade como cuidar da beleza de maneira prática e sem complicação.
             </p>
           </div>
           <div className="mt-8 flex gap-4 border-l-2 border-rose-400 pl-5">
             <Quote className="shrink-0 text-rose-700" size={22} />
-            <p className="font-display text-xl italic leading-7 text-brown">
-              Um bom conteúdo não interrompe: ele faz parte da conversa.
-            </p>
+            <p className="font-display text-xl italic leading-7 text-brown">Produzo conteúdo digital com uma abordagem autêntica, próxima e apaixonada pelo assunto.</p>
           </div>
           <div className="mt-6 flex flex-wrap gap-2">
             {highlights.map((h) => (

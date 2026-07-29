@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, ExternalLink, Instagram, Play } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Instagram, Play, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { CONTACT } from "@/config/contact";
@@ -8,19 +8,19 @@ import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const reels = [
-  { id: 1, shortcode: "DbWQmS3yZYe", title: "Antioxidante na rotina de skincare", thumbnail: "/images/instagram/2026-07-28_19-15-28_UTC.jpg", views: "8.2K" },
-  { id: 2, shortcode: "DbT5QldSJZa", title: "Cantinho da blogueira", thumbnail: "/images/instagram/2026-07-27_21-11-21_UTC.jpg", views: "12.5K" },
-  { id: 3, shortcode: "DbQ5uumR_eK", title: "CeraVe Hidratante", thumbnail: "/images/instagram/2026-07-26_17-16-03_UTC.jpg", views: "6.7K" },
-  { id: 4, shortcode: "DbMLL61SkA-", title: "Trend Bubble Maybelline", thumbnail: "/images/instagram/2026-07-24_21-15-20_UTC.jpg", views: "15.1K" },
-  { id: 5, shortcode: "DbHbsxFp5Bs", title: "Meu pandinha Vizzela", thumbnail: "/images/instagram/2026-07-23_01-01-35_UTC.jpg", views: "9.3K" },
-  { id: 6, shortcode: "DbEBocqRYHS", title: "Drop L'Oréal Kérastase", thumbnail: "/images/instagram/2026-07-21_17-21-56_UTC.jpg", views: "21.8K" },
+  { id: 1, shortcode: "DbWQmS3yZYe", title: "Antioxidante na rotina de skincare", thumbnail: "/images/instagram/2026-07-28_19-15-28_UTC.jpg" },
+  { id: 2, shortcode: "DbT5QldSJZa", title: "Cantinho da blogueira", thumbnail: "/images/instagram/2026-07-27_21-11-21_UTC.jpg" },
+  { id: 3, shortcode: "DbQ5uumR_eK", title: "CeraVe Creme Hidratante", thumbnail: "/images/instagram/2026-07-26_17-16-03_UTC.jpg" },
+  { id: 4, shortcode: "DbMLL61SkA-", title: "Trend Bubble com Maybelline", thumbnail: "/images/instagram/2026-07-24_21-15-20_UTC.jpg" },
+  { id: 5, shortcode: "DbHbsxFp5Bs", title: "Meu pandinha da Vizzela", thumbnail: "/images/instagram/2026-07-23_01-01-35_UTC.jpg" },
+  { id: 6, shortcode: "DbEBocqRYHS", title: "Drop da Kérastase", thumbnail: "/images/instagram/2026-07-21_17-21-56_UTC.jpg" },
 ];
 
 export function InstagramReels() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section className="section-padding bg-cream">
+    <section id="reels" className="section-padding bg-cream">
       <div className="container-shell">
         <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
           <SectionHeading
@@ -60,9 +60,9 @@ export function InstagramReels() {
                   <button
                     onClick={() => setActive(null)}
                     className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-ink/60 text-white backdrop-blur transition hover:bg-ink"
-                    aria-label="Fechar embed"
+                    aria-label="Fechar vídeo incorporado"
                   >
-                    <ExternalLink size={16} />
+                    <X size={16} />
                   </button>
                 </div>
               ) : (
@@ -82,9 +82,6 @@ export function InstagramReels() {
                   <span className="absolute left-4 top-4 rounded-full bg-rose-700/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                     Reels
                   </span>
-                  <span className="absolute left-4 top-14 rounded-full bg-ink/70 px-3 py-1 text-[10px] font-bold text-white backdrop-blur">
-                    {reel.views} views
-                  </span>
                   <span className="absolute inset-0 grid place-items-center">
                     <span className="grid size-16 place-items-center rounded-full bg-white/90 text-ink shadow-xl transition-transform group-hover:scale-110">
                       <Play size={26} className="ml-1" />
@@ -96,7 +93,7 @@ export function InstagramReels() {
                 </button>
               )}
               <div className="flex items-center justify-between p-4">
-                <p className="text-xs text-muted">@{reel.shortcode.slice(0, 6)}</p>
+                <p className="text-xs text-muted">@blogdapriscilaa</p>
                 <a
                   href={`https://instagram.com/p/${reel.shortcode}/`}
                   target="_blank"

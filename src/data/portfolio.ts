@@ -6,9 +6,6 @@ export const portfolioCategories: Array<"Todos" | PortfolioCategory> = [
   "Moda",
   "Lifestyle",
   "Casa",
-  "Alimentação",
-  "Serviços",
-  "Tecnologia",
 ];
 
 const ig = (file: string) => `/images/instagram/${file}`;
@@ -40,7 +37,7 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 3,
-    title: "Linha Plant Power - resenha completa",
+    title: "Linha Plant Power — resenha completa",
     brand: "Plant Power",
     category: "Beleza",
     format: "Reels",
@@ -52,7 +49,7 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 4,
-    title: "CeraVe Creme Hidratante - 3 ceramidas essenciais",
+    title: "CeraVe Creme Hidratante — três ceramidas essenciais",
     brand: "CeraVe",
     category: "Beleza",
     format: "Reels",
@@ -112,7 +109,7 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 9,
-    title: "Sérum tecnologia e alta performance",
+    title: "Sérum: tecnologia e alta performance",
     brand: "Mezzo Dermocosméticos",
     category: "Beleza",
     format: "Reels",
@@ -136,8 +133,8 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 11,
-    title: "Drop L'Oreal - Kérastase",
-    brand: "L'Oreal Paris",
+    title: "Drop da Kérastase",
+    brand: "Kérastase",
     category: "Beleza",
     format: "Reels",
     thumbnail: ig("2026-07-21_17-21-56_UTC.jpg"),
@@ -221,7 +218,7 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 18,
-    title: "Meu jeitinho - trend beauty",
+    title: "Meu jeitinho — trend de beleza",
     brand: "Beleza",
     category: "Beleza",
     format: "Reels",
@@ -245,7 +242,7 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 20,
-    title: "Perfume para cabelo ProHall",
+    title: "Perfume capilar ProHall",
     brand: "ProHall",
     category: "Beleza",
     format: "Reels",

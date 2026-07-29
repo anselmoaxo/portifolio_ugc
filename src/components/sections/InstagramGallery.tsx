@@ -1,29 +1,29 @@
 "use client";
 
-import { ArrowUpRight, ExternalLink, Heart, Instagram, MessageCircle } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Instagram } from "lucide-react";
 import Image from "next/image";
 import { CONTACT } from "@/config/contact";
 import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const galleryImages = [
-  { src: "/images/instagram/2026-07-28_19-15-28_UTC.jpg", alt: "Antioxidante skincare", shortcode: "DbWQmS3yZYe", likes: 847, comments: 32 },
-  { src: "/images/instagram/2026-07-27_21-11-21_UTC.jpg", alt: "Cantinho blogueira", shortcode: "DbT5QldSJZa", likes: 1250, comments: 48 },
-  { src: "/images/instagram/2026-07-24_21-15-20_UTC.jpg", alt: "Bubble Maybelline", shortcode: "DbMLL61SkA-", likes: 1530, comments: 67 },
-  { src: "/images/instagram/2026-07-23_01-01-35_UTC.jpg", alt: "Pandinha Vizzela", shortcode: "DbHbsxFp5Bs", likes: 932, comments: 41 },
-  { src: "/images/instagram/2026-07-21_17-21-56_UTC.jpg", alt: "Drop L'Oréal", shortcode: "DbEBocqRYHS", likes: 2180, comments: 95 },
-  { src: "/images/instagram/2026-07-19_22-18-47_UTC.jpg", alt: "Copa do Mundo", shortcode: "Da_awlwy0Od", likes: 756, comments: 28 },
-  { src: "/images/instagram/2026-07-18_22-55-06_UTC.jpg", alt: "Lip combo inverno", shortcode: "Da854ncSwa1", likes: 1100, comments: 52 },
-  { src: "/images/instagram/2026-07-18_15-53-25_UTC.jpg", alt: "Escolhidos Vizzela", shortcode: "Da8Jp7RRocw", likes: 980, comments: 35 },
-  { src: "/images/instagram/2026-07-16_19-34-18_UTC_1.jpg", alt: "Sorriso saudável", shortcode: "Da3Zw8qGapI", likes: 1340, comments: 61 },
-  { src: "/images/instagram/2026-07-15_16-23-34_UTC.jpg", alt: "Creme dental", shortcode: "Da0ezpIRLvK", likes: 820, comments: 37 },
-  { src: "/images/instagram/2026-07-14_15-29-13_UTC.jpg", alt: "Perfume cabelo", shortcode: "Daxz2LpRWUg", likes: 1050, comments: 44 },
-  { src: "/images/instagram/2026-07-19_16-43-03_UTC.jpg", alt: "Blusinha diva", shortcode: "Da-0ZYLRmGa", likes: 690, comments: 22 },
+  { src: "/images/instagram/2026-07-28_19-15-28_UTC.jpg", alt: "Conteúdo da Priscila sobre antioxidante e skincare", shortcode: "DbWQmS3yZYe" },
+  { src: "/images/instagram/2026-07-27_21-11-21_UTC.jpg", alt: "Conteúdo da Priscila sobre seu cantinho de criação", shortcode: "DbT5QldSJZa" },
+  { src: "/images/instagram/2026-07-24_21-15-20_UTC.jpg", alt: "Conteúdo da Priscila com produto Maybelline", shortcode: "DbMLL61SkA-" },
+  { src: "/images/instagram/2026-07-23_01-01-35_UTC.jpg", alt: "Conteúdo da Priscila com produto Vizzela", shortcode: "DbHbsxFp5Bs" },
+  { src: "/images/instagram/2026-07-21_17-21-56_UTC.jpg", alt: "Conteúdo da Priscila com produto Kérastase", shortcode: "DbEBocqRYHS" },
+  { src: "/images/instagram/2026-07-19_22-18-47_UTC.jpg", alt: "Registro de lifestyle publicado por Priscila", shortcode: "Da_awlwy0Od" },
+  { src: "/images/instagram/2026-07-18_22-55-06_UTC.jpg", alt: "Conteúdo de maquiagem com combinação de produtos para os lábios", shortcode: "Da854ncSwa1" },
+  { src: "/images/instagram/2026-07-18_15-53-25_UTC.jpg", alt: "Produtos Vizzela escolhidos por Priscila", shortcode: "Da8Jp7RRocw" },
+  { src: "/images/instagram/2026-07-16_19-34-18_UTC_1.jpg", alt: "Conteúdo sobre cuidados com o sorriso", shortcode: "Da3Zw8qGapI" },
+  { src: "/images/instagram/2026-07-15_16-23-34_UTC.jpg", alt: "Conteúdo sobre cuidados com creme dental", shortcode: "Da0ezpIRLvK" },
+  { src: "/images/instagram/2026-07-14_15-29-13_UTC.jpg", alt: "Conteúdo sobre perfume capilar", shortcode: "Daxz2LpRWUg" },
+  { src: "/images/instagram/2026-07-19_16-43-03_UTC.jpg", alt: "Conteúdo de moda publicado por Priscila", shortcode: "Da-0ZYLRmGa" },
 ];
 
 export function InstagramGallery() {
   return (
-    <section className="section-padding bg-soft">
+    <section id="galeria" className="section-padding bg-soft">
       <div className="container-shell">
         <SectionHeading
           align="center"
@@ -39,7 +39,8 @@ export function InstagramGallery() {
               href={`https://instagram.com/p/${img.shortcode}/`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative mb-3 block overflow-hidden rounded-2xl bg-brown/10"
+              className="group relative mb-3 block overflow-hidden rounded-2xl bg-brown/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-700"
+              aria-label={`${img.alt}. Ver publicação no Instagram — abre em nova aba`}
             >
               <Image
                 src={resolveMediaPath(img.src)}
@@ -50,11 +51,7 @@ export function InstagramGallery() {
                 className="w-full object-cover transition duration-500 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/80 via-ink/10 to-transparent p-4 opacity-0 transition group-hover:opacity-100">
-                <div className="flex items-center gap-4 text-sm text-white">
-                  <span className="flex items-center gap-1.5"><Heart size={15} className="text-rose-400" /> {img.likes}</span>
-                  <span className="flex items-center gap-1.5"><MessageCircle size={15} /> {img.comments}</span>
-                </div>
+              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/80 via-ink/10 to-transparent p-4 opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
                 <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-rose-200">
                   Ver no Instagram <ExternalLink size={11} />
                 </span>

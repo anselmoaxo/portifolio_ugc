@@ -20,19 +20,13 @@ export type PortfolioVideo = {
   source: VideoSource;
   accent: string;
   featured?: boolean;
-  demo?: boolean;
   externalUrl?: string;
 };
 
 export type LeadData = {
   name: string;
   company: string;
-  email: string;
-  whatsapp: string;
-  instagram: string;
-  segment: string;
   contentType: string;
-  deadline: string;
   message: string;
   privacy: boolean;
   website?: string;

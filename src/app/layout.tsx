@@ -3,8 +3,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
-import { SITE } from "@/config/site";
-import { BASE_PATH } from "@/lib/asset-path";
+import { SITE, siteUrl } from "@/config/site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -25,10 +24,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: SITE.title, template: `%s | ${SITE.name}` },
   description: SITE.description,
-  alternates: { canonical: "/" },
-  openGraph: { title: SITE.title, description: SITE.description, url: "/", siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: `${BASE_PATH}/og-image.svg`, width: 1200, height: 630, alt: SITE.title }] },
-  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: [`${BASE_PATH}/og-image.svg`] },
-  keywords: ["portfólio ugc", "media kit", "criadora de conteúdo", "influenciadora digital", "beleza", "skincare", "ugc brasil", "download portfólio"],
+  alternates: { canonical: siteUrl() },
+  openGraph: { title: SITE.title, description: SITE.description, url: siteUrl(), siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: siteUrl("/og-image.png"), width: 1200, height: 630, alt: "Priscila, criadora de conteúdo UGC" }] },
+  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: [siteUrl("/og-image.png")] },
+  keywords: ["portfólio UGC", "mídia kit", "criadora de conteúdo", "influenciadora digital"],
+  icons: { icon: siteUrl("/icon.svg") },
 };
 
 export default function RootLayout({
@@ -38,7 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${manrope.variable} ${cormorant.variable} h-full antialiased`}>
-      <body className="min-h-full"><Header /><main>{children}</main><Footer /><WhatsAppButton /></body>
+      <body className="min-h-full">
+        <a href="#conteudo-principal" className="skip-link">Pular para o conteúdo principal</a>
+        <Header />
+        <main id="conteudo-principal">{children}</main>
+        <Footer />
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }

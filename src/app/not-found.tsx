@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-cream px-6">
+    <div className="flex min-h-screen items-center justify-center bg-cream px-6">
       <div className="text-center">
         <p className="font-display text-[8rem] leading-none text-rose-200">
           404
@@ -22,6 +22,6 @@ export default function NotFound() {
           Voltar ao início
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

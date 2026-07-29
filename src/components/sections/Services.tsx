@@ -11,9 +11,9 @@ export function Services() {
           <Reveal>
             <SectionHeading
               light
-              eyebrow="O que eu crio"
-              title="Formatos para cada momento"
-              description="Do unboxing ao review, passando por Reels e campanhas completas: cada conteúdo é pensado para o objetivo certo."
+              eyebrow="Produção de conteúdo"
+              title="Fotografia e vídeos UGC"
+              description="Conheça exemplos de fotografias e vídeos produzidos para apresentar produtos de forma clara e próxima."
             />
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -39,7 +39,7 @@ export function Services() {
         </div>
         <div className="mt-12 text-center">
           <a href="#contato" className="button-light inline-flex">
-            <Star size={16} /> Solicitar parceria personalizada
+            <Star size={16} /> Solicitar orçamento
           </a>
         </div>
       </div>

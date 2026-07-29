@@ -1,12 +1,12 @@
 import type { LeadData } from "@/types/content";
 
 export function buildLeadMessage(data: LeadData) {
-  return `Olá, Priscila! Conheci seu portfólio e gostaria de conversar sobre uma parceria UGC.
+  return `Olá, Priscila!
 
-Nome: ${data.name}
-Empresa: ${data.company}
-Instagram: ${data.instagram || "Não informado"}
+Meu nome é: ${data.name}
+Empresa ou marca: ${data.company}
 Tipo de conteúdo: ${data.contentType}
-Prazo: ${data.deadline}
-Mensagem: ${data.message}`;
+Mensagem: ${data.message}
+
+Conheci seu trabalho pelo portfólio e gostaria de conversar sobre uma parceria.`;
 }

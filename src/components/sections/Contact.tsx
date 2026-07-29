@@ -19,18 +19,24 @@ export function Contact() {
             Conte um pouco sobre sua marca e o conteúdo que você deseja produzir. Será um prazer conversar!
           </p>
           <div className="mt-10 space-y-4">
+            {isWhatsAppConfigured && (
+              <a href={whatsappUrl(whatsappDefaultMessage)} target="_blank" rel="noopener noreferrer" className="button-light mb-3 w-full justify-center sm:w-auto">
+                <MessageCircle size={18} />
+                Solicitar orçamento pelo WhatsApp
+              </a>
+            )}
             <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
               <span className="grid size-10 place-items-center rounded-full border border-white/15"><Instagram size={18} /></span>
               {CONTACT.instagramHandle}
             </a>
-            <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 text-white/75 hover:text-white">
+            <a href={`mailto:${CONTACT.email}?subject=Proposta%20de%20parceria%20UGC`} className="flex min-w-0 items-center gap-3 text-white/75 hover:text-white">
               <span className="grid size-10 place-items-center rounded-full border border-white/15"><Mail size={18} /></span>
-              {CONTACT.email}
+              <span className="break-all">{CONTACT.email}</span>
             </a>
             {isWhatsAppConfigured && (
               <a href={whatsappUrl(whatsappDefaultMessage)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
                 <span className="grid size-10 place-items-center rounded-full border border-white/15"><MessageCircle size={18} /></span>
-                Conversar pelo WhatsApp
+                Abrir WhatsApp
               </a>
             )}
             {CONTACT.tiktok && (

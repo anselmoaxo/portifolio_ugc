@@ -1,20 +1,23 @@
 import { Download, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import { SITE, siteUrl } from "@/config/site";
 import { resolveMediaPath } from "@/lib/asset-path";
 
 export const metadata: Metadata = {
-  title: "Portfólio em PDF | Priscila",
-  description: "Baixe o portfólio completo da Priscila — criadora de conteúdo UGC, influenciadora digital e media kit.",
-  openGraph: { title: "Portfólio em PDF | Priscila", description: "Media kit e portfólio UGC completo para download." },
+  title: "Mídia kit",
+  description: "Visualize e baixe o mídia kit e o portfólio UGC de Priscila Almeida.",
+  alternates: { canonical: siteUrl("/portfolio/") },
+  openGraph: { title: "Mídia kit | Blog da Priscila", description: "Visualize e baixe o mídia kit e o portfólio UGC de Priscila Almeida.", url: siteUrl("/portfolio/"), siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: siteUrl("/og-image.png"), width: 1200, height: 630, alt: "Mídia kit da Priscila" }] },
+  twitter: { card: "summary_large_image", title: "Mídia kit | Blog da Priscila", description: "Visualize e baixe o mídia kit e o portfólio UGC de Priscila Almeida.", images: [siteUrl("/og-image.png")] },
 };
 
 const pdfUrl = resolveMediaPath("/portfolio/Portfolio-Priscila.pdf");
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-cream pt-28">
+    <div className="min-h-screen bg-cream pt-28">
       <div className="container-shell pb-16">
-        <p className="eyebrow text-rose-700">Media Kit</p>
+        <p className="eyebrow text-rose-700">Mídia Kit</p>
         <h1 className="mt-5 font-display text-5xl text-ink md:text-7xl">
           Portfólio <span className="italic text-rose-700">Priscila</span>
         </h1>
@@ -48,11 +51,11 @@ export default function PortfolioPage() {
           <iframe
             src={`${pdfUrl}#toolbar=0&navpanes=1`}
             title="Portfólio Priscila Almeida"
-            className="h-[80vh] w-full"
+            className="h-[65dvh] min-h-[28rem] w-full md:h-[80vh]"
             loading="lazy"
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

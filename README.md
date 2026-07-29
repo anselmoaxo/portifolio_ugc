@@ -13,9 +13,9 @@ Portfólio de criadora de conteúdo UGC. Site estático construído com Next.js,
 ## Como instalar
 
 ```bash
-git clone https://github.com/SEU-USUARIO/portifolio_ugc.git
+git clone https://github.com/anselmoaxo/portifolio_ugc.git
 cd portifolio_ugc
-npm install
+npm ci
 ```
 
 ## Como executar localmente
@@ -41,9 +41,7 @@ O site estático será gerado na pasta `out/`.
 3. Vá em **Settings > Pages** e selecione **GitHub Actions** como source
 4. O deploy será feito automaticamente após cada push
 
-A URL será: `https://SEU-USUARIO.github.io/portifolio_ugc/`
-
-**Atenção:** se o repositório for `SEU-USUARIO.github.io`, remova `basePath` e `assetPrefix` do `next.config.ts`.
+A URL publicada é: `https://anselmoaxo.github.io/portifolio_ugc/`
 
 ## Onde alterar
 
@@ -53,19 +51,19 @@ A URL será: `https://SEU-USUARIO.github.io/portifolio_ugc/`
 | Link do Instagram         | `src/config/contact.ts`          |
 | Link do TikTok            | `src/config/contact.ts`          |
 | E-mail                    | `src/config/contact.ts`          |
-| URL do site               | `.env.example` → `NEXT_PUBLIC_SITE_URL` |
+| URL do site               | `src/config/site.ts`             |
 | Fotos do portfólio        | `public/images/instagram/`       |
+| PDF oficial               | `public/portfolio/Portfolio-Priscila.pdf` |
 | Dados dos posts           | `src/data/portfolio.ts`          |
-| Marcas parceiras          | `src/data/brands.ts`             |
+| Marcas presentes          | `src/data/brands.ts`             |
 | Serviços                  | `src/data/services.ts`           |
-| Cases em destaque         | `src/data/featured-work.ts`      |
-| Depoimentos               | `src/data/testimonials.ts`       |
 
 ## Segurança
 
 - **Nunca** faça commit do arquivo `.env`
 - **Nunca** coloque tokens, senhas ou chaves de API em variáveis `NEXT_PUBLIC_*`
-- O formulário de contato envia os dados diretamente para o WhatsApp — nenhum dado é armazenado
+- O formulário apenas monta uma mensagem e abre o WhatsApp; nenhum dado é armazenado pelo site
+- A tradução para inglês ou espanhol abre o serviço Google Tradutor somente após a escolha do visitante
 - Todos os links externos usam `rel="noopener noreferrer"`
 
 ## Licença
