@@ -23,12 +23,10 @@ export function Contact() {
               <span className="grid size-10 place-items-center rounded-full border border-white/15"><Instagram size={18} /></span>
               {CONTACT.instagramHandle}
             </a>
-            {CONTACT.email !== "EMAIL_DA_PRISCILA" && (
-              <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 text-white/75 hover:text-white">
-                <span className="grid size-10 place-items-center rounded-full border border-white/15"><Mail size={18} /></span>
-                {CONTACT.email}
-              </a>
-            )}
+            <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 text-white/75 hover:text-white">
+              <span className="grid size-10 place-items-center rounded-full border border-white/15"><Mail size={18} /></span>
+              {CONTACT.email}
+            </a>
             {isWhatsAppConfigured && (
               <a href={whatsappUrl(whatsappDefaultMessage)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
                 <span className="grid size-10 place-items-center rounded-full border border-white/15"><MessageCircle size={18} /></span>

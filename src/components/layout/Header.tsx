@@ -9,6 +9,7 @@ const links = [
   ["Início", "/#inicio"],
   ["Sobre mim", "/#sobre"],
   ["Portfólio", "/#portfolio"],
+  ["Media Kit", "/portfolio"],
   ["Reels", "/#reels"],
   ["Galeria", "/#galeria"],
   ["Parcerias", "/#parcerias"],

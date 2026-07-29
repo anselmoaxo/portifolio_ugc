@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { title: SITE.title, description: SITE.description, url: "/", siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: `${BASE_PATH}/og-image.svg`, width: 1200, height: 630, alt: SITE.title }] },
   twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: [`${BASE_PATH}/og-image.svg`] },
+  keywords: ["portfólio ugc", "media kit", "criadora de conteúdo", "influenciadora digital", "beleza", "skincare", "ugc brasil", "download portfólio"],
 };
 
 export default function RootLayout({

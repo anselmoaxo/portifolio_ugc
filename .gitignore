@@ -52,6 +52,9 @@ next-env.d.ts
 # OS
 Desktop.ini
 
+# design source files
+/portifolio-pdf/
+
 # temp
 *.tmp
 temp/
