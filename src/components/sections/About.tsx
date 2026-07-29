@@ -18,7 +18,7 @@ export function About() {
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sand shadow-[0_20px_60px_rgba(88,58,47,.12)]">
             <Image
-              src={resolveMediaPath("/images/instagram/2026-07-24_21-15-20_UTC.jpg")}
+              src={resolveMediaPath("/images/foto_perfil.webp")}
               alt="Priscila Almeida, criadora de conteúdo UGC"
               fill
               sizes="(max-width: 1024px) 90vw, 38vw"

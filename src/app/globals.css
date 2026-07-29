@@ -116,3 +116,8 @@ select.form-field option { background: #292320; color: #fff; }
   outline: none;
 }
 .language-switcher select:focus-visible { outline: 2px solid #a35f50; outline-offset: 2px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
