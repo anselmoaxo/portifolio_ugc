@@ -30,7 +30,7 @@ export function InstagramReels() {
           <a
             href={CONTACT.instagram}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="button-secondary shrink-0"
           >
             <Instagram size={18} />
@@ -99,7 +99,7 @@ export function InstagramReels() {
                 <a
                   href={`https://instagram.com/p/${reel.shortcode}/`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-xs font-bold text-rose-700 transition hover:text-rose-400"
                 >
                   Ver no Instagram <ExternalLink size={12} className="inline" />

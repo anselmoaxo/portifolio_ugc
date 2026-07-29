@@ -30,7 +30,7 @@ export function Portfolio() {
             <a
               href="https://www.instagram.com/blogdapriscilaa/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-rose-700 underline"
             >
               @blogdapriscilaa
@@ -97,7 +97,7 @@ export function Portfolio() {
                 <a
                   href={item.externalUrl ?? item.videoUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 hover:text-rose-400"
                 >
                   Instagram <ExternalLink size={11} />

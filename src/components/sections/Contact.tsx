@@ -19,7 +19,7 @@ export function Contact() {
             Conte um pouco sobre sua marca e o conteúdo que você deseja produzir. Será um prazer conversar!
           </p>
           <div className="mt-10 space-y-4">
-            <a href={CONTACT.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
+            <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
               <span className="grid size-10 place-items-center rounded-full border border-white/15"><Instagram size={18} /></span>
               {CONTACT.instagramHandle}
             </a>
@@ -30,13 +30,13 @@ export function Contact() {
               </a>
             )}
             {isWhatsAppConfigured && (
-              <a href={whatsappUrl(whatsappDefaultMessage)} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
+              <a href={whatsappUrl(whatsappDefaultMessage)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
                 <span className="grid size-10 place-items-center rounded-full border border-white/15"><MessageCircle size={18} /></span>
                 Conversar pelo WhatsApp
               </a>
             )}
             {CONTACT.tiktok && (
-              <a href={CONTACT.tiktok} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
+              <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/75 hover:text-white">
                 <span className="grid size-10 place-items-center rounded-full border border-white/15"><Music2 size={18} /></span>
                 TikTok
               </a>

@@ -34,7 +34,7 @@ export function Hero() {
             <a
               href={CONTACT.instagram}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="button-quiet"
             >
               <Instagram size={18} /> Seguir no Instagram
@@ -69,7 +69,7 @@ export function Hero() {
           <a
             href={CONTACT.instagram}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="absolute -bottom-5 left-0 inline-flex items-center gap-2 rounded-2xl border border-white/70 bg-white/90 px-5 py-3 text-sm font-bold text-ink shadow-xl backdrop-blur transition hover:bg-white"
           >
             <Instagram size={16} className="text-rose-700" />

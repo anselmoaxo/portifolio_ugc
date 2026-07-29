@@ -32,8 +32,8 @@ export function Header() {
         </Link>
         <nav className="hidden items-center gap-5 xl:flex" aria-label="Navegação principal">
           {links.map(([label, href]) => <Link key={href} href={href} className="nav-link">{label}</Link>)}
-          <a href={CONTACT.instagram} target="_blank" rel="noreferrer" className="nav-link inline-flex items-center gap-1"><Instagram size={14} /></a>
-          {CONTACT.tiktok ? <a href={CONTACT.tiktok} target="_blank" rel="noreferrer" className="nav-link inline-flex items-center gap-1"><Music2 size={14} /></a> : <span className="nav-link inline-flex items-center gap-1 opacity-40"><Music2 size={14} /></span>}
+          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1"><Instagram size={14} /></a>
+          {CONTACT.tiktok ? <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1"><Music2 size={14} /></a> : <span className="nav-link inline-flex items-center gap-1 opacity-40"><Music2 size={14} /></span>}
         </nav>
         <Link href="/#contato" className="button-primary hidden lg:inline-flex">Solicitar parceria</Link>
         <button className="grid size-11 place-items-center rounded-full border border-brown/20 xl:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Fechar menu" : "Abrir menu"}>

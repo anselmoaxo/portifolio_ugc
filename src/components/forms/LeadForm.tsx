@@ -2,68 +2,101 @@
 
 import { CheckCircle2, LoaderCircle, MessageCircle, Send } from "lucide-react";
 import { useRef, useState } from "react";
-import { CONTACT, isWhatsAppConfigured, whatsappUrl } from "@/config/contact";
-import { validateLead } from "@/lib/lead-validation";
+import { CONTACT, isWhatsAppConfigured, whatsappDefaultMessage, whatsappUrl } from "@/config/contact";
 import { buildLeadMessage } from "@/lib/whatsapp";
 import type { LeadData } from "@/types/content";
 
-type Status = { type: "idle" | "loading" | "success" | "error" | "fallback"; message?: string; whatsapp?: string };
+type Status = { type: "idle" | "success" | "fallback"; message?: string };
 
-const contentOptions = ["Vídeo UGC", "Reels", "Stories", "Unboxing", "Review", "Fotografia", "Campanha completa", "Outro"];
+const contentOptions = [
+  "Vídeo UGC",
+  "Reels",
+  "Stories",
+  "Unboxing",
+  "Review",
+  "Fotografia",
+  "Campanha completa",
+  "Outro",
+];
+
+function validate(data: LeadData): Record<string, string> {
+  const errors: Record<string, string> = {};
+  if (!data.name.trim() || data.name.length > 100) errors.name = "Nome obrigatório (máx. 100 caracteres).";
+  if (!data.company.trim() || data.company.length > 100) errors.company = "Empresa obrigatória (máx. 100 caracteres).";
+  if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = "E-mail válido obrigatório.";
+  if (!data.whatsapp.trim() || data.whatsapp.replace(/\D/g, "").length < 10) errors.whatsapp = "WhatsApp com DDD obrigatório.";
+  if (data.instagram && data.instagram.length > 100) errors.instagram = "Máximo de 100 caracteres.";
+  if (!data.segment.trim()) errors.segment = "Segmento obrigatório.";
+  if (!data.contentType) errors.contentType = "Selecione um tipo de conteúdo.";
+  if (!data.deadline.trim()) errors.deadline = "Prazo obrigatório.";
+  if (!data.message.trim() || data.message.length > 1000) errors.message = "Mensagem obrigatória (máx. 1000 caracteres).";
+  if (!data.privacy) errors.privacy = "Aceite a política de privacidade.";
+  return errors;
+}
 
 export function LeadForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<Status>({ type: "idle" });
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+
+    const name = String(form.get("name") || "").trim();
+    const company = String(form.get("company") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const whatsapp = String(form.get("whatsapp") || "").trim().replace(/\D/g, "");
+    const instagram = String(form.get("instagram") || "").trim();
+    const segment = String(form.get("segment") || "").trim();
+    const contentType = String(form.get("contentType") || "");
+    const deadline = String(form.get("deadline") || "").trim();
+    const message = String(form.get("message") || "").trim();
+    const privacy = form.get("privacy") === "on";
+    const website = String(form.get("website") || "");
+
+    if (website) return;
+
     const data: LeadData = {
-      name: String(form.get("name") || ""),
-      company: String(form.get("company") || ""),
-      email: String(form.get("email") || ""),
-      whatsapp: String(form.get("whatsapp") || ""),
-      instagram: String(form.get("instagram") || ""),
-      segment: String(form.get("segment") || ""),
-      contentType: String(form.get("contentType") || ""),
-      deadline: String(form.get("deadline") || ""),
-      message: String(form.get("message") || ""),
-      privacy: form.get("privacy") === "on",
-      website: String(form.get("website") || ""),
+      name,
+      company,
+      email,
+      whatsapp,
+      instagram,
+      segment,
+      contentType,
+      deadline,
+      message: message.slice(0, 1000),
+      privacy,
+      website,
     };
-    const nextErrors = validateLead(data);
+
+    const nextErrors = validate(data);
     setErrors(nextErrors);
+
     if (Object.keys(nextErrors).length) {
-      setStatus({ type: "error", message: "Revise os campos destacados antes de enviar." });
       return;
     }
-    setStatus({ type: "loading" });
-    try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        if (result.fallback) {
-          setStatus({
-            type: "fallback",
-            message: "O envio automático não está disponível. Envie pelo WhatsApp com todos os dados preenchidos.",
-            whatsapp: whatsappUrl(buildLeadMessage(data)),
-          });
-          return;
-        }
-        setErrors(result.errors || {});
-        throw new Error(result.error || "Não foi possível enviar.");
-      }
+
+    const encodedMessage = encodeURIComponent(buildLeadMessage(data));
+
+    if (isWhatsAppConfigured) {
       formRef.current?.reset();
-      setStatus({ type: "success", message: "Mensagem enviada com sucesso! Obrigada pelo interesse. Retornarei em breve." });
-    } catch (error) {
       setStatus({
-        type: "error",
-        message: error instanceof Error ? error.message : "Ocorreu um erro. Tente novamente.",
+        type: "success",
+        message: "Redirecionando para o WhatsApp com sua proposta...",
+      });
+      setTimeout(() => {
+        window.open(
+          `https://wa.me/${CONTACT.whatsapp}?text=${encodedMessage}`,
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }, 800);
+    } else {
+      setStatus({
+        type: "fallback",
+        message: "WhatsApp não configurado. Entre em contato pelo Instagram: @blogdapriscilaa",
       });
     }
   }
@@ -73,12 +106,12 @@ export function LeadForm() {
     <form ref={formRef} onSubmit={handleSubmit} noValidate className="grid gap-5 md:grid-cols-2">
       <div>
         <label htmlFor="name">Nome *</label>
-        <input className={fieldClass} id="name" name="name" placeholder="Seu nome completo" autoComplete="name" aria-invalid={!!errors.name} />
+        <input className={fieldClass} id="name" name="name" placeholder="Seu nome completo" maxLength={100} autoComplete="name" aria-invalid={!!errors.name} />
         {errors.name && <FieldError text={errors.name} />}
       </div>
       <div>
         <label htmlFor="company">Empresa *</label>
-        <input className={fieldClass} id="company" name="company" placeholder="Nome da sua marca" autoComplete="organization" aria-invalid={!!errors.company} />
+        <input className={fieldClass} id="company" name="company" placeholder="Nome da sua marca" maxLength={100} autoComplete="organization" aria-invalid={!!errors.company} />
         {errors.company && <FieldError text={errors.company} />}
       </div>
       <div>
@@ -93,7 +126,8 @@ export function LeadForm() {
       </div>
       <div>
         <label htmlFor="instagram">Instagram da marca</label>
-        <input className={fieldClass} id="instagram" name="instagram" placeholder="@suamarca" />
+        <input className={fieldClass} id="instagram" name="instagram" placeholder="@suamarca" maxLength={100} />
+        {errors.instagram && <FieldError text={errors.instagram} />}
       </div>
       <div>
         <label htmlFor="segment">Segmento *</label>
@@ -115,7 +149,7 @@ export function LeadForm() {
       </div>
       <div className="md:col-span-2">
         <label htmlFor="message">Mensagem *</label>
-        <textarea className={`${fieldClass} min-h-36 resize-y`} id="message" name="message" maxLength={2000} placeholder="Conte sobre o produto, objetivo da campanha, canais e outras informações relevantes..." aria-invalid={!!errors.message} />
+        <textarea className={`${fieldClass} min-h-36 resize-y`} id="message" name="message" maxLength={1000} placeholder="Conte sobre o produto, objetivo da campanha, canais e outras informações relevantes..." aria-invalid={!!errors.message} />
         {errors.message && <FieldError text={errors.message} />}
       </div>
       <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -125,19 +159,21 @@ export function LeadForm() {
       <div className="md:col-span-2">
         <label className="flex cursor-pointer items-start gap-3 text-sm font-normal leading-6 text-white/65">
           <input type="checkbox" name="privacy" className="mt-1 size-4 accent-[#b77967]" />
-          <span>Li e aceito a <a className="underline underline-offset-2 hover:text-white" href="/politica-de-privacidade" target="_blank">política de privacidade</a> e autorizo o uso dos dados para este contato. *</span>
+          <span>Li e aceito a <a className="underline underline-offset-2 hover:text-white" href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">política de privacidade</a> e autorizo o uso dos dados para este contato. *</span>
         </label>
         {errors.privacy && <FieldError text={errors.privacy} />}
       </div>
       <div className="md:col-span-2">
-        <button type="submit" disabled={status.type === "loading"} className="button-light w-full justify-center sm:w-auto">
-          {status.type === "loading" ? <><LoaderCircle className="animate-spin" size={18} /> Enviando...</> : <>Solicitar proposta <Send size={17} /></>}
+        <button type="submit" className="button-light w-full justify-center sm:w-auto">
+          Enviar proposta pelo WhatsApp <Send size={17} />
         </button>
       </div>
-      {status.type !== "idle" && status.type !== "loading" && (
+      {status.type !== "idle" && (
         <div
           className={`md:col-span-2 rounded-xl border p-4 text-sm ${
-            status.type === "success" ? "border-emerald-300/30 bg-emerald-300/10 text-emerald-100" : "border-rose-200/30 bg-rose-200/10 text-rose-100"
+            status.type === "success"
+              ? "border-emerald-300/30 bg-emerald-300/10 text-emerald-100"
+              : "border-amber-300/30 bg-amber-300/10 text-amber-100"
           }`}
           role="status"
         >
@@ -145,23 +181,11 @@ export function LeadForm() {
             {status.type === "success" ? <CheckCircle2 size={18} /> : <MessageCircle size={18} />}
             {status.message}
           </p>
-          {status.type === "fallback" && isWhatsAppConfigured && status.whatsapp && (
-            <a className="mt-4 inline-flex items-center gap-2 font-bold underline" href={status.whatsapp} target="_blank" rel="noreferrer">
-              Continuar pelo WhatsApp <MessageCircle size={16} />
-            </a>
-          )}
-          {status.type === "fallback" && !isWhatsAppConfigured && (
-            <p className="mt-3 text-xs">
-              Configure o WhatsApp em <code>src/config/contact.ts</code> para habilitar este canal.
-            </p>
-          )}
         </div>
       )}
-      {CONTACT.email === "EMAIL_DA_PRISCILA" && (
-        <p className="md:col-span-2 text-xs text-white/35">
-          Configure o e-mail e WhatsApp em <code>src/config/contact.ts</code> antes da publicação.
-        </p>
-      )}
+      <p className="md:col-span-2 text-xs text-white/35">
+        Ao enviar, você será redirecionado para o WhatsApp com os dados preenchidos. Nenhum dado é armazenado neste site.
+      </p>
     </form>
   );
 }

@@ -37,7 +37,7 @@ export function InstagramGallery() {
               key={img.shortcode}
               href={`https://instagram.com/p/${img.shortcode}/`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="group relative mb-3 block overflow-hidden rounded-2xl bg-brown/10"
             >
               <Image
@@ -66,7 +66,7 @@ export function InstagramGallery() {
           <a
             href={CONTACT.instagram}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="button-primary inline-flex"
           >
             <Instagram size={18} />

@@ -31,7 +31,7 @@ export function About() {
           <a
             href={CONTACT.instagram}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="absolute -left-2 -top-5 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-ink shadow-md transition hover:shadow-lg"
           >
             <Instagram size={14} className="text-rose-700" />
