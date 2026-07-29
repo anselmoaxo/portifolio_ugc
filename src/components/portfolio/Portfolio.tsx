@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { portfolioCategories, portfolioVideos } from "@/data/portfolio";
 import type { PortfolioCategory, PortfolioVideo } from "@/types/content";
+import { resolveMediaPath } from "@/lib/asset-path";
 import { VideoModal } from "./VideoModal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -69,7 +70,7 @@ export function Portfolio() {
                 aria-label={`Assistir ${item.title}`}
               >
                 <Image
-                  src={item.thumbnail}
+                  src={resolveMediaPath(item.thumbnail)}
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"

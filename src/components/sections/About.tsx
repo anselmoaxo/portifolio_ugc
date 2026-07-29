@@ -1,6 +1,7 @@
 import { ArrowUpRight, Instagram, Quote, Star } from "lucide-react";
 import Image from "next/image";
 import { CONTACT } from "@/config/contact";
+import { resolveMediaPath } from "@/lib/asset-path";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -18,7 +19,7 @@ export function About() {
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sand shadow-[0_20px_60px_rgba(88,58,47,.12)]">
             <Image
-              src="/images/instagram/2026-07-21_17-21-56_UTC.jpg"
+              src={resolveMediaPath("/images/instagram/2026-07-21_17-21-56_UTC.jpg")}
               alt="Foto da Priscila - criadora de conteúdo UGC"
               fill
               sizes="(max-width: 1024px) 90vw, 38vw"

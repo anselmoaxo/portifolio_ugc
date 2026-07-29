@@ -1,6 +1,7 @@
 import { ArrowDownRight, ArrowUpRight, Instagram, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
 import { CONTACT } from "@/config/contact";
+import { resolveMediaPath } from "@/lib/asset-path";
 
 const stats = [
   { label: "Seguidores", value: "4.3K" },
@@ -58,7 +59,7 @@ export function Hero() {
           </div>
           <div className="relative ml-auto aspect-[3/4] w-[90%] overflow-hidden rounded-[10rem_10rem_2rem_2rem] bg-rose-200 shadow-[0_30px_80px_rgba(88,58,47,.18)]">
             <Image
-              src="/images/instagram/2026-07-28_19-15-28_UTC.jpg"
+              src={resolveMediaPath("/images/instagram/2026-07-28_19-15-28_UTC.jpg")}
               alt="Foto da Priscila - criadora de conteúdo UGC"
               fill
               priority

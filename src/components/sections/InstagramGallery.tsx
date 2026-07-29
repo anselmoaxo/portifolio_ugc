@@ -3,6 +3,7 @@
 import { ArrowUpRight, ExternalLink, Heart, Instagram, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import { CONTACT } from "@/config/contact";
+import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const galleryImages = [
@@ -41,7 +42,7 @@ export function InstagramGallery() {
               className="group relative mb-3 block overflow-hidden rounded-2xl bg-brown/10"
             >
               <Image
-                src={img.src}
+                src={resolveMediaPath(img.src)}
                 alt={img.alt}
                 width={400}
                 height={400}

@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SITE } from "@/config/site";
+import { BASE_PATH } from "@/lib/asset-path";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -25,8 +26,8 @@ export const metadata: Metadata = {
   title: { default: SITE.title, template: `%s | ${SITE.name}` },
   description: SITE.description,
   alternates: { canonical: "/" },
-  openGraph: { title: SITE.title, description: SITE.description, url: "/", siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: SITE.title }] },
-  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: ["/og-image.svg"] },
+  openGraph: { title: SITE.title, description: SITE.description, url: "/", siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: `${BASE_PATH}/og-image.svg`, width: 1200, height: 630, alt: SITE.title }] },
+  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: [`${BASE_PATH}/og-image.svg`] },
 };
 
 export default function RootLayout({

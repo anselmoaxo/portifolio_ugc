@@ -4,6 +4,7 @@ import { ArrowUpRight, ExternalLink, Instagram, Play } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { CONTACT } from "@/config/contact";
+import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const reels = [
@@ -71,7 +72,7 @@ export function InstagramReels() {
                   aria-label={`Assistir ${reel.title}`}
                 >
                   <Image
-                    src={reel.thumbnail}
+                    src={resolveMediaPath(reel.thumbnail)}
                     alt={reel.title}
                     fill
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
