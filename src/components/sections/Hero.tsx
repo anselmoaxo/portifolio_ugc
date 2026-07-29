@@ -11,7 +11,7 @@ export function Hero() {
       <div className="container-shell grid min-h-[calc(100vh-7rem)] items-center gap-12 py-12 lg:grid-cols-[1.05fr_.95fr] lg:py-16">
         <div className="relative z-10 min-w-0">
           <p className="eyebrow flex items-center gap-2 text-rose-700">
-            <Sparkles size={14} /> Criadora de conteúdo UGC
+            <Sparkles size={14} /> Influenciadora &amp; criadora de conteúdo UGC
           </p>
           <h1 className="mt-6 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,7rem)] leading-[.88] tracking-[-.05em] text-ink">
             Beleza real, conteúdo <span className="italic text-rose-700">autêntico</span>
@@ -64,12 +64,12 @@ export function Hero() {
           </div>
           <div className="relative ml-auto aspect-[3/4] w-[90%] overflow-hidden rounded-[10rem_10rem_2rem_2rem] bg-rose-200 shadow-[0_30px_80px_rgba(88,58,47,.18)]">
             <Image
-              src={resolveMediaPath("/images/instagram/2026-07-28_19-15-28_UTC.jpg")}
+              src={resolveMediaPath("/images/instagram/2026-07-24_21-15-20_UTC.jpg")}
               alt="Foto da Priscila - criadora de conteúdo UGC"
               fill
               priority
               sizes="(max-width: 1024px) 88vw, 40vw"
-              className="object-cover object-center"
+              className="object-cover object-top"
             />
           </div>
           <a

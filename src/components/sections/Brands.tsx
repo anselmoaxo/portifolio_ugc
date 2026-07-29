@@ -1,5 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { partnerBrands } from "@/data/brands";
+import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Brands() {
@@ -9,19 +11,24 @@ export function Brands() {
         <SectionHeading
           align="center"
           eyebrow="Marcas"
-          title="Marcas presentes no meu conteúdo"
-          description="Produtos e marcas que já apareceram em publicações do meu perfil."
+          title="Marcas trabalhadas"
+          description="Parcerias e trabalhos apresentados no Mídia Kit oficial da Priscila."
         />
-        <ul className="mt-12 grid grid-cols-2 border-l border-t border-brown/10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {partnerBrands.map((brand) => (
             <li
-              key={brand.name}
-              className="flex min-h-28 items-center justify-center border-b border-r border-brown/10 p-4 text-center"
+              key={brand.id}
+              className="flex min-h-44 flex-col items-center justify-center rounded-3xl border border-brown/10 bg-soft/50 p-4 text-center"
             >
-              <span className="font-display text-lg tracking-wider text-brown" aria-hidden="true">
-                {brand.logo}
-              </span>
-              <span className="sr-only">{brand.name}</span>
+              <Image
+                src={resolveMediaPath(brand.image)}
+                alt={brand.name ? `Logotipo da marca ${brand.name}` : (brand.alt ?? "Marca apresentada no Mídia Kit")}
+                width={160}
+                height={160}
+                sizes="(max-width: 640px) 36vw, (max-width: 1024px) 20vw, 150px"
+                className="aspect-square w-full max-w-32 rounded-full object-cover shadow-sm"
+              />
+              {brand.name && <span className="mt-3 text-sm font-bold text-brown">{brand.name}</span>}
             </li>
           ))}
         </ul>

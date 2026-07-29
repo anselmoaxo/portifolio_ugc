@@ -4,6 +4,7 @@ import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { InstagramGallery } from "@/components/sections/InstagramGallery";
 import { InstagramReels } from "@/components/sections/InstagramReels";
+import { Metrics } from "@/components/sections/Metrics";
 import { Portfolio } from "@/components/portfolio/Portfolio";
 import { Services } from "@/components/sections/Services";
 import { CONTACT } from "@/config/contact";
@@ -15,7 +16,7 @@ export default function Home() {
     "@type": "Person",
     name: "Priscila Almeida",
     url: SITE.url,
-    jobTitle: "Criadora de conteúdo UGC",
+    jobTitle: "Influenciadora digital e criadora de conteúdo UGC",
     sameAs: [CONTACT.instagram],
     description: SITE.description,
   };
@@ -30,6 +31,7 @@ export default function Home() {
       />
       <Hero />
       <About />
+      <Metrics />
       <Services />
       <Portfolio />
       <InstagramReels />

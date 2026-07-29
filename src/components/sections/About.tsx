@@ -19,11 +19,11 @@ export function About() {
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sand shadow-[0_20px_60px_rgba(88,58,47,.12)]">
             <Image
-              src={resolveMediaPath("/images/instagram/2026-07-21_17-21-56_UTC.jpg")}
+              src={resolveMediaPath("/images/instagram/2026-07-16_01-21-14_UTC.jpg")}
               alt="Priscila Almeida, criadora de conteúdo UGC"
               fill
               sizes="(max-width: 1024px) 90vw, 38vw"
-              className="object-cover object-center"
+              className="object-cover object-top"
             />
           </div>
           <div className="absolute -bottom-4 -right-2 grid size-28 place-items-center rounded-full border-8 border-white bg-ink text-center text-xs uppercase leading-4 tracking-[.15em] text-white md:-right-6 shadow-lg">
@@ -44,10 +44,13 @@ export function About() {
           <SectionHeading eyebrow="Sobre mim" title="Olá! Sou Priscila Almeida" />
           <div className="mt-8 space-y-5 text-base leading-8 text-muted md:text-lg">
             <p>
-              Tenho 39 anos, moro em Guarulhos, São Paulo, e sou apaixonada pelo universo da beleza, do skincare, dos cabelos e do autocuidado.
+              Tenho 39 anos, sou de Guarulhos, São Paulo, e sou apaixonada por tudo relacionado ao universo da beleza, do skincare, dos cabelos e do autocuidado.
             </p>
             <p>
-              Minha página é um espaço onde compartilho dicas, tutoriais e resenhas de produtos para ajudar minha audiência a se sentir mais confiante. Quero mostrar à minha comunidade como cuidar da beleza de maneira prática e sem complicação.
+              Quero mostrar à minha comunidade como cuidar da beleza de maneira prática e sem complicação. Minha página é um espaço onde compartilho dicas, tutoriais e resenhas de produtos para ajudar minha audiência a se sentir mais confiante.
+            </p>
+            <p>
+              Com uma base sólida de seguidores engajados nas redes sociais, sou uma influenciadora digital confiável e respeitada, com uma abordagem autêntica e apaixonada pelo assunto.
             </p>
           </div>
           <div className="mt-8 flex gap-4 border-l-2 border-rose-400 pl-5">

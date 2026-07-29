@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container-shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.2fr_.8fr_1fr]">
         <div>
           <p className="font-display text-3xl">Blog da <span className="italic text-rose-200">Priscila</span></p>
-          <p className="mt-5 max-w-md leading-7 text-white/60">Criadora de conteúdo UGC. Beleza, skincare, maquiagem e bem-estar. Conteúdo autêntico para marcas que desejam conversar com pessoas reais.</p>
+          <p className="mt-5 max-w-md leading-7 text-white/60">Influenciadora e criadora de conteúdo UGC. Beleza, skincare, cabelos e autocuidado. Conteúdo autêntico para marcas que desejam conversar com pessoas reais.</p>
           <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="button-light mt-6 inline-flex">
             <Instagram size={16} /> Seguir no Instagram <ExternalLink size={13} />
           </a>

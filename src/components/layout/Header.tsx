@@ -1,10 +1,12 @@
 "use client";
 
 import { Instagram, Menu, MessageCircle, Music2, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CONTACT, whatsappDefaultMessage, whatsappUrl } from "@/config/contact";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { resolveMediaPath } from "@/lib/asset-path";
 
 const links = [
   ["Início", "/#inicio"],
@@ -33,8 +35,16 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-brown/10 bg-cream/90 backdrop-blur-xl">
       <div className="container-shell flex h-20 items-center justify-between">
-        <Link href="/#inicio" className="font-display text-xl text-ink" aria-label="Blog da Priscila, início">
-          Blog da <span className="italic text-rose-700">Priscila</span>
+        <Link href="/#inicio" className="flex items-center gap-3 font-display text-xl text-ink" aria-label="Blog da Priscila, início">
+          <Image
+            src={resolveMediaPath("/images/instagram/2026-07-24_21-15-20_UTC.jpg")}
+            alt="Foto de perfil da Priscila Almeida"
+            width={44}
+            height={44}
+            priority
+            className="size-11 rounded-full border-2 border-white object-cover object-top shadow-sm ring-1 ring-rose-700/20"
+          />
+          <span>Blog da <span className="italic text-rose-700">Priscila</span></span>
         </Link>
         <nav className="hidden items-center gap-5 xl:flex" aria-label="Navegação principal">
           {links.map(([label, href]) => <Link key={href} href={href} prefetch={href === "/portfolio" ? false : undefined} className="nav-link">{label}</Link>)}
