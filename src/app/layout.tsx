@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: { title: SITE.title, description: SITE.description, url: siteUrl(), siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: siteUrl("/og-image.png"), width: 1200, height: 630, alt: "Priscila, criadora de conteúdo UGC" }] },
   twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: [siteUrl("/og-image.png")] },
   keywords: ["portfólio UGC", "mídia kit", "criadora de conteúdo", "influenciadora digital"],
-  icons: { icon: siteUrl("/icon.svg") },
+  icons: { icon: siteUrl("/icon.svg"), shortcut: siteUrl("/icon.svg") },
 };
 
 export default function RootLayout({

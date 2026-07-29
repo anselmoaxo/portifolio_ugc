@@ -78,6 +78,7 @@ label { display: block; margin-bottom: .5rem; font-size: .72rem; font-weight: 80
 .form-field:focus-visible { outline: 2px solid #e5c5bb; outline-offset: 2px; }
 .form-field[aria-invalid="true"] { border-color: #e5a89a; }
 select.form-field { color-scheme: dark; }
+select.form-field option { background: #292320; color: #fff; }
 
 .case-visual::after { content: ""; position: absolute; width: 18rem; height: 18rem; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; right: -3rem; top: -6rem; }
 .case-rose { background: linear-gradient(145deg, #cf9989, #9d6253); }
@@ -102,6 +103,7 @@ select.form-field { color-scheme: dark; }
 .language-switcher {
   display: inline-flex; align-items: center; gap: .35rem; margin: 0; color: #695f5a;
 }
+.language-flag { font-size: 1.15rem; line-height: 1; }
 .language-switcher select {
   background: transparent;
   border: 1px solid rgba(105,77,67,.25);

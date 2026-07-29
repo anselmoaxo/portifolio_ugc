@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Download, FileText, Instagram, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Circle, Download, FileText, Instagram, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { CONTACT } from "@/config/contact";
 import { resolveMediaPath } from "@/lib/asset-path";
@@ -59,24 +59,44 @@ export function Hero() {
           </p>
         </div>
         <div className="relative mx-auto w-full max-w-[460px] lg:mr-0">
-          <div className="absolute -right-6 -top-6 hidden font-display text-[8rem] italic leading-none text-rose-200/50 md:block">
-            P
-          </div>
-          <div className="relative ml-auto aspect-[3/4] w-[90%] overflow-hidden rounded-[10rem_10rem_2rem_2rem] bg-rose-200 shadow-[0_30px_80px_rgba(88,58,47,.18)]">
+          <div className="relative ml-auto aspect-[3/4] w-[90%] overflow-hidden rounded-[10rem_10rem_2rem_2rem] bg-rose-100 shadow-[0_30px_80px_rgba(88,58,47,.18)]">
             <Image
-              src={resolveMediaPath("/images/instagram/2026-07-24_21-15-20_UTC.jpg")}
-              alt="Foto da Priscila - criadora de conteúdo UGC"
+              src={resolveMediaPath("/images/instagram/2026-07-15_16-23-34_UTC.jpg")}
+              alt="Preparação de cenário para conteúdo de beleza"
               fill
               priority
               sizes="(max-width: 1024px) 88vw, 40vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/15" aria-hidden="true" />
+          </div>
+          <div className="absolute bottom-10 right-1 z-10 w-28 origin-bottom-right translate-x-6 translate-y-4 rotate-[-8deg] overflow-hidden rounded-[1.25rem] border-[3px] border-white/90 shadow-2xl shadow-ink/20 sm:w-36">
+            <div className="relative aspect-[9/16] bg-ink">
+              <Image
+                src={resolveMediaPath("/images/instagram/2026-07-21_17-21-56_UTC.jpg")}
+                alt="Prévia do conteúdo em gravação"
+                fill
+                sizes="180px"
+                className="object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" aria-hidden="true" />
+              <div className="absolute left-1/2 top-3 flex -translate-x-1/2 items-center gap-1 rounded-full bg-ink/70 px-2.5 py-1 text-[9px] font-bold text-white backdrop-blur">
+                <Circle size={6} className="animate-pulse fill-red-500 text-red-500" aria-hidden="true" />
+                REC
+              </div>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-white/20 px-2 py-0.5 text-[8px] font-bold text-white backdrop-blur">
+                UGC
+              </div>
+            </div>
+          </div>
+          <div className="absolute -bottom-3 -right-3 z-20 rounded-2xl border border-white/60 bg-white/90 px-5 py-2.5 text-xs font-bold uppercase tracking-[.12em] text-rose-700 shadow-lg backdrop-blur md:-right-5">
+            UGC · Beleza · Lifestyle
           </div>
           <a
             href={CONTACT.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute -bottom-5 left-0 inline-flex items-center gap-2 rounded-2xl border border-white/70 bg-white/90 px-5 py-3 text-sm font-bold text-ink shadow-xl backdrop-blur transition hover:bg-white"
+            className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-bold text-ink shadow-md transition hover:shadow-lg"
           >
             <Instagram size={16} className="text-rose-700" />
             @blogdapriscilaa

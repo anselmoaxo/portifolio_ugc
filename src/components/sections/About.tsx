@@ -1,6 +1,5 @@
-import { ArrowUpRight, Instagram, Quote, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import Image from "next/image";
-import { CONTACT } from "@/config/contact";
 import { resolveMediaPath } from "@/lib/asset-path";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,26 +18,13 @@ export function About() {
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sand shadow-[0_20px_60px_rgba(88,58,47,.12)]">
             <Image
-              src={resolveMediaPath("/images/instagram/2026-07-16_01-21-14_UTC.jpg")}
+              src={resolveMediaPath("/images/instagram/2026-07-24_21-15-20_UTC.jpg")}
               alt="Priscila Almeida, criadora de conteúdo UGC"
               fill
               sizes="(max-width: 1024px) 90vw, 38vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
-          <div className="absolute -bottom-4 -right-2 grid size-28 place-items-center rounded-full border-8 border-white bg-ink text-center text-xs uppercase leading-4 tracking-[.15em] text-white md:-right-6 shadow-lg">
-            Criar<br />conectar<br />inspirar
-          </div>
-          <a
-            href={CONTACT.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute -left-2 -top-5 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-ink shadow-md transition hover:shadow-lg"
-          >
-            <Instagram size={14} className="text-rose-700" />
-            {CONTACT.instagramHandle}
-            <ArrowUpRight size={12} />
-          </a>
         </Reveal>
         <Reveal>
           <SectionHeading eyebrow="Sobre mim" title="Olá! Sou Priscila Almeida" />
