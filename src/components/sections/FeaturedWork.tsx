@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, Quote } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { featuredWork } from "@/data/featured-work";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 

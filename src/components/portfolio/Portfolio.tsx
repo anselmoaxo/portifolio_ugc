@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ExternalLink, Play, Star } from "lucide-react";
+import { ExternalLink, Play, Star } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { portfolioCategories, portfolioVideos } from "@/data/portfolio";

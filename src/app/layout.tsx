@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   title: { default: SITE.title, template: `%s | ${SITE.name}` },
   description: SITE.description,
   alternates: { canonical: "/" },
-  openGraph: { title: SITE.title, description: SITE.description, url: "/", siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: SITE.title }] },
-  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: ["/opengraph-image"] },
+  openGraph: { title: SITE.title, description: SITE.description, url: "/", siteName: SITE.name, locale: "pt_BR", type: "website", images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: SITE.title }] },
+  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: ["/og-image.svg"] },
 };
 
 export default function RootLayout({

@@ -1,8 +1,8 @@
 "use client";
 
-import { CheckCircle2, LoaderCircle, MessageCircle, Send } from "lucide-react";
+import { CheckCircle2, MessageCircle, Send } from "lucide-react";
 import { useRef, useState } from "react";
-import { CONTACT, isWhatsAppConfigured, whatsappDefaultMessage, whatsappUrl } from "@/config/contact";
+import { CONTACT, isWhatsAppConfigured } from "@/config/contact";
 import { buildLeadMessage } from "@/lib/whatsapp";
 import type { LeadData } from "@/types/content";
 
