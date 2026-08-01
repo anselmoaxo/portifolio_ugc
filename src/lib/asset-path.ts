@@ -1,15 +1,22 @@
-export const BASE_PATH = process.env.NODE_ENV === "production" ? "/portifolio_ugc" : "";
-
 export function assetPath(path: string): string {
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${BASE_PATH}${normalized}`;
+  if (
+    path.startsWith('http://') ||
+    path.startsWith('https://') ||
+    path.startsWith('//') ||
+    path.startsWith('mailto:') ||
+    path.startsWith('tel:')
+  ) {
+    return path;
+  }
+
+  return path.startsWith('/') ? path : '/' + path;
 }
 
 export function resolveMediaPath(path: string): string {
   if (
-    path.startsWith("http://") ||
-    path.startsWith("https://") ||
-    path.startsWith("//")
+    path.startsWith('http://') ||
+    path.startsWith('https://') ||
+    path.startsWith('//')
   ) {
     return path;
   }

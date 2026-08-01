@@ -3,7 +3,7 @@ export const SITE = {
   title: "Priscila | Influenciadora e Criadora de Conteúdo UGC",
   description:
     "Conheça o portfólio UGC da Priscila, seus conteúdos, vídeos e trabalhos com marcas.",
-  url: "https://anselmoaxo.github.io/portifolio_ugc",
+  url: "https://blogdapriscila.com.br",
 } as const;
 
 export function siteUrl(path = "/") {
