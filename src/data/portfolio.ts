@@ -133,8 +133,8 @@ export const portfolioVideos: PortfolioVideo[] = [
   },
   {
     id: 11,
-    title: "Drop da Kérastase",
-    brand: "Kérastase",
+    title: "Drop da L'Oréal Professionnel",
+    brand: "L'Oréal Professionnel",
     category: "Beleza",
     format: "Reels",
     thumbnail: ig("2026-07-21_17-21-56_UTC.jpg"),
