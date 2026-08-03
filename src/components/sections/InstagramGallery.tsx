@@ -1,25 +1,11 @@
 "use client";
 
 import { ArrowUpRight, ExternalLink, Instagram } from "lucide-react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { CONTACT } from "@/config/contact";
+import { instagramGallery } from "@/data/instagram";
 import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const galleryImages = [
-  { src: "/images/instagram/2026-07-28_19-15-28_UTC.jpg", alt: "Conteúdo da Priscila sobre antioxidante e skincare", shortcode: "DbWQmS3yZYe" },
-  { src: "/images/instagram/2026-07-27_21-11-21_UTC.jpg", alt: "Conteúdo da Priscila sobre seu cantinho de criação", shortcode: "DbT5QldSJZa" },
-  { src: "/images/instagram/2026-07-24_21-15-20_UTC.jpg", alt: "Conteúdo da Priscila com produto Maybelline", shortcode: "DbMLL61SkA-" },
-  { src: "/images/instagram/2026-07-23_01-01-35_UTC.jpg", alt: "Conteúdo da Priscila com produto Vizzela", shortcode: "DbHbsxFp5Bs" },
-  { src: "/images/instagram/2026-07-21_17-21-56_UTC.jpg", alt: "Conteúdo da Priscila com produto Kérastase", shortcode: "DbEBocqRYHS" },
-  { src: "/images/instagram/2026-07-19_22-18-47_UTC.jpg", alt: "Registro de lifestyle publicado por Priscila", shortcode: "Da_awlwy0Od" },
-  { src: "/images/instagram/2026-07-18_22-55-06_UTC.jpg", alt: "Conteúdo de maquiagem com combinação de produtos para os lábios", shortcode: "Da854ncSwa1" },
-  { src: "/images/instagram/2026-07-18_15-53-25_UTC.jpg", alt: "Produtos Vizzela escolhidos por Priscila", shortcode: "Da8Jp7RRocw" },
-  { src: "/images/instagram/2026-07-16_19-34-18_UTC_1.jpg", alt: "Conteúdo sobre cuidados com o sorriso", shortcode: "Da3Zw8qGapI" },
-  { src: "/images/instagram/2026-07-15_16-23-34_UTC.jpg", alt: "Conteúdo sobre cuidados com creme dental", shortcode: "Da0ezpIRLvK" },
-  { src: "/images/instagram/2026-07-14_15-29-13_UTC.jpg", alt: "Conteúdo sobre perfume capilar", shortcode: "Daxz2LpRWUg" },
-  { src: "/images/instagram/2026-07-19_16-43-03_UTC.jpg", alt: "Conteúdo de moda publicado por Priscila", shortcode: "Da-0ZYLRmGa" },
-];
 
 export function InstagramGallery() {
   return (
@@ -33,7 +19,7 @@ export function InstagramGallery() {
         />
 
         <div className="mt-12 columns-2 gap-3 md:columns-3 lg:columns-4">
-          {galleryImages.map((img) => (
+          {instagramGallery.map((img) => (
             <a
               key={img.shortcode}
               href={`https://instagram.com/p/${img.shortcode}/`}
@@ -42,8 +28,8 @@ export function InstagramGallery() {
               className="group relative mb-3 block overflow-hidden rounded-2xl bg-brown/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-700"
               aria-label={`${img.alt}. Ver publicação no Instagram — abre em nova aba`}
             >
-              <Image
-                src={resolveMediaPath(img.src)}
+              <OptimizedImage
+                src={resolveMediaPath(img.thumbnail)}
                 alt={img.alt}
                 width={400}
                 height={400}

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "sync:instagram": "node scripts/sync-instagram.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
@@ -23,6 +25,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
+    "sharp": "0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

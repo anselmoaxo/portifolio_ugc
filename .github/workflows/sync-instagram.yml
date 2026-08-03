@@ -1,0 +1,43 @@
+name: Sync Instagram
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # diariamente às 6h (horário de Brasília)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sincronizar posts do Instagram
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: node scripts/sync-instagram.mjs
+
+      - name: Otimizar novas imagens
+        run: node scripts/optimize-images.mjs
+
+      - name: Commitar alterações
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma alteração encontrada."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images src/data/instagram.ts
+          git commit -m "chore: sincronizar conteúdo do Instagram [skip ci]"
+          git push

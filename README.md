@@ -55,8 +55,36 @@ A URL publicada é: `https://anselmoaxo.github.io/portifolio_ugc/`
 | Fotos do portfólio        | `public/images/instagram/`       |
 | PDF oficial               | `public/portfolio/Portfolio-Priscila.pdf` |
 | Dados dos posts           | `src/data/portfolio.ts`          |
+| Galeria e Reels (home)    | `src/data/instagram.ts`          |
 | Marcas presentes          | `src/data/brands.ts`             |
 | Serviços                  | `src/data/services.ts`           |
+
+## Automações (GitHub Actions)
+
+- **Deploy** (`.github/workflows/deploy-pages.yml`): build e deploy no GitHub Pages a cada push na `main`.
+- **Qualidade** (`.github/workflows/quality.yml`): lint, typecheck e build em pushes e PRs.
+- **Sync Instagram** (`.github/workflows/sync-instagram.yml`): roda diariamente (cron) e sob demanda (*Run workflow*). Busca posts/reels novos via Instagram Graph API, baixa e otimiza as thumbnails (WebP) e atualiza `src/data/instagram.ts`, commitando direto na `main` (o deploy do Pages dispara em seguida).
+
+### Configurar o Sync Instagram
+
+1. Crie um token de longa duração da [Instagram Graph API](https://developers.facebook.com/docs/instagram-api/) (conta Business/Creator).
+2. No repositório, vá em **Settings > Secrets and variables > Actions** e crie:
+   - `IG_ACCESS_TOKEN` — token de longa duração
+   - `IG_USER_ID` — ID numérico da conta Instagram
+3. Sem os secrets, o workflow não altera nada (o site continua com os dados atuais).
+
+Itens marcados com `pinned: true` em `src/data/instagram.ts` nunca são removidos pela sincronização.
+
+## Scripts úteis
+
+| Comando                    | O que faz                                                        |
+| -------------------------- | ---------------------------------------------------------------- |
+| `npm run optimize:images`  | Otimiza imagens (WebP, redimensiona, gera blur placeholders)     |
+| `npm run sync:instagram`   | Sincroniza posts/reels do Instagram (requer `IG_ACCESS_TOKEN` e `IG_USER_ID` no ambiente) |
+| `npm run lint`             | ESLint                                                           |
+| `npm run typecheck`        | Verificação de tipos TypeScript                                  |
+
+Fotos novas (hero, perfil etc.) podem ser colocadas em `public/images/raw/` — o `npm run optimize:images` otimiza e move para `public/images/` automaticamente.
 
 ## Segurança
 

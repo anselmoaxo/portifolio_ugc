@@ -1,20 +1,12 @@
 "use client";
 
 import { ArrowUpRight, ExternalLink, Instagram, Play, X } from "lucide-react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { useState } from "react";
 import { CONTACT } from "@/config/contact";
+import { instagramReels } from "@/data/instagram";
 import { resolveMediaPath } from "@/lib/asset-path";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const reels = [
-  { id: 1, shortcode: "DbWQmS3yZYe", title: "Antioxidante na rotina de skincare", thumbnail: "/images/instagram/2026-07-28_19-15-28_UTC.jpg" },
-  { id: 2, shortcode: "DbT5QldSJZa", title: "Cantinho da blogueira", thumbnail: "/images/instagram/2026-07-27_21-11-21_UTC.jpg" },
-  { id: 3, shortcode: "DbQ5uumR_eK", title: "CeraVe Creme Hidratante", thumbnail: "/images/instagram/2026-07-26_17-16-03_UTC.jpg" },
-  { id: 4, shortcode: "DbMLL61SkA-", title: "Trend Bubble com Maybelline", thumbnail: "/images/instagram/2026-07-24_21-15-20_UTC.jpg" },
-  { id: 5, shortcode: "DbHbsxFp5Bs", title: "Meu pandinha da Vizzela", thumbnail: "/images/instagram/2026-07-23_01-01-35_UTC.jpg" },
-  { id: 6, shortcode: "DbEBocqRYHS", title: "Drop da Kérastase", thumbnail: "/images/instagram/2026-07-21_17-21-56_UTC.jpg" },
-];
 
 export function InstagramReels() {
   const [active, setActive] = useState<number | null>(null);
@@ -41,7 +33,7 @@ export function InstagramReels() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {reels.map((reel) => (
+          {instagramReels.map((reel) => (
             <article
               key={reel.id}
               className={`group relative overflow-hidden rounded-2xl border border-brown/10 bg-white transition-all ${
@@ -71,7 +63,7 @@ export function InstagramReels() {
                   className="relative aspect-[9/16] w-full overflow-hidden"
                   aria-label={`Assistir ${reel.title}`}
                 >
-                  <Image
+                  <OptimizedImage
                     src={resolveMediaPath(reel.thumbnail)}
                     alt={reel.title}
                     fill

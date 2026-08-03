@@ -1,7 +1,7 @@
 "use client";
 
 import { ExternalLink, Play, X } from "lucide-react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { useEffect, useRef } from "react";
 import { resolveMediaPath } from "@/lib/asset-path";
 import type { PortfolioVideo } from "@/types/content";
@@ -47,7 +47,7 @@ export function VideoModal({ item, onClose }: { item: PortfolioVideo | null; onC
           <X size={19} />
         </button>
         <div className="relative aspect-[9/16] min-h-[26rem] overflow-hidden bg-brown">
-          <Image src={resolveMediaPath(item.thumbnail)} alt={item.title} fill sizes="420px" className="object-cover" />
+          <OptimizedImage src={resolveMediaPath(item.thumbnail)} alt={item.title} fill sizes="420px" className="object-cover" />
           <div className="absolute inset-0 grid place-items-center bg-ink/35 p-8 text-center">
             <div>
               <Play size={48} className="mx-auto text-white" aria-hidden="true" />

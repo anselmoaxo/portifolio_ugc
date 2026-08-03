@@ -1,7 +1,7 @@
 "use client";
 
 import { ExternalLink, Play, Star } from "lucide-react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { useRef, useState } from "react";
 import { portfolioCategories, portfolioVideos } from "@/data/portfolio";
 import type { PortfolioCategory, PortfolioVideo } from "@/types/content";
@@ -73,7 +73,7 @@ export function Portfolio() {
                 className="relative block aspect-[2/3] w-full overflow-hidden rounded-[1.6rem] bg-sand text-left shadow-sm"
                 aria-label={`Ver detalhes de ${item.title}`}
               >
-                <Image
+                 <OptimizedImage
                   src={resolveMediaPath(item.thumbnail)}
                   alt={item.title}
                   fill
