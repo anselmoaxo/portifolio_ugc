@@ -2,8 +2,6 @@ import { About } from "@/components/sections/About";
 import { Brands } from "@/components/sections/Brands";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
-import { InstagramGallery } from "@/components/sections/InstagramGallery";
-import { InstagramReels } from "@/components/sections/InstagramReels";
 import { Metrics } from "@/components/sections/Metrics";
 import { Portfolio } from "@/components/portfolio/Portfolio";
 import { Services } from "@/components/sections/Services";
@@ -34,8 +32,6 @@ export default function Home() {
       <Metrics />
       <Services />
       <Portfolio />
-      <InstagramReels />
-      <InstagramGallery />
       <Brands />
       <Contact />
     </>

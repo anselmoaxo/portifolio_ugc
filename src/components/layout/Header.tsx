@@ -1,6 +1,6 @@
 "use client";
 
-import { Instagram, Menu, MessageCircle, Music2, X } from "lucide-react";
+import { Instagram, Menu, MessageCircle, Music2, TicketPercent, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CONTACT, whatsappDefaultMessage, whatsappUrl } from "@/config/contact";
@@ -14,6 +14,24 @@ const links = [
   ["Marcas", "/#parcerias"],
   ["Contato", "/#contato"],
 ];
+
+function CuponsLink({ onClick, mobile = false }: { onClick?: () => void; mobile?: boolean }) {
+  return (
+    <Link
+      href="/cupons"
+      onClick={onClick}
+      className={
+        mobile
+          ? "group relative mt-2 inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-rose-600 via-fuchsia-500 to-rose-600 bg-[length:200%_100%] px-6 py-3 font-display text-xl text-white shadow-[0_8px_30px_rgba(190,24,93,.45)] animate-[coupon-shine_3s_linear_infinite]"
+          : "group relative inline-flex items-center gap-1.5 overflow-hidden rounded-full bg-gradient-to-r from-rose-600 via-fuchsia-500 to-rose-600 bg-[length:200%_100%] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-[0_4px_20px_rgba(190,24,93,.45)] transition-transform hover:scale-105 animate-[coupon-shine_3s_linear_infinite]"
+      }
+    >
+      <span className="absolute inset-0 rounded-full border-2 border-white/40 opacity-75 animate-ping [animation-duration:2s]" aria-hidden="true" />
+      <TicketPercent size={mobile ? 20 : 14} className="relative" />
+      <span className="relative">Meus Cupons</span>
+    </Link>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -37,7 +55,12 @@ export function Header() {
           Blog da <span className="italic text-rose-700">Priscila</span>
         </Link>
         <nav className="hidden items-center gap-5 xl:flex" aria-label="Navegação principal">
-          {links.map(([label, href]) => <Link key={href} href={href} prefetch={href === "/portfolio" ? false : undefined} className="nav-link">{label}</Link>)}
+          {links.map(([label, href], i) => (
+            <span key={href} className="inline-flex items-center gap-5">
+              <Link href={href} prefetch={href === "/portfolio" ? false : undefined} className="nav-link">{label}</Link>
+              {i === 1 && <CuponsLink />}
+            </span>
+          ))}
           <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1" aria-label="Instagram da Priscila — abre em nova aba"><Instagram size={14} /></a>
           {CONTACT.tiktok && <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1" aria-label="TikTok da Priscila — abre em nova aba"><Music2 size={14} /></a>}
         </nav>
@@ -59,6 +82,7 @@ export function Header() {
           <div className="mx-auto flex max-w-lg flex-col">
             <div className="mb-3"><LanguageSwitcher /></div>
             {links.map(([label, href], index) => <Link key={href} href={href} prefetch={href === "/portfolio" ? false : undefined} onClick={() => setOpen(false)} className="border-b border-brown/10 py-3 font-display text-xl"><span className="mr-4 text-xs text-rose-700">{String(index + 1).padStart(2, "0")}</span>{label}</Link>)}
+            <div className="pt-4"><CuponsLink mobile onClick={() => setOpen(false)} /></div>
             <Link href="/#contato" onClick={() => setOpen(false)} className="button-primary mt-6 justify-center">Solicitar parceria</Link>
           </div>
         </nav>
