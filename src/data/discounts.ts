@@ -1,0 +1,147 @@
+export type Discount = {
+  id: string;
+  brand: string;
+  title: string;
+  description: string;
+  coupon?: string;
+  url: string;
+  category: string;
+  type: "coupon" | "affiliate" | "store" | "offer";
+  featured?: boolean;
+};
+
+export const discounts: Discount[] = [
+  {
+    id: "gummy",
+    brand: "Gummy",
+    title: "Gummy",
+    description: "Vitaminas e cuidados para cabelo, pele e bem-estar.",
+    coupon: "GUMMYPRISCILAA",
+    url: "https://www.gummy.com.br/",
+    category: "Saúde & Beleza",
+    type: "coupon",
+    featured: true,
+  },
+  {
+    id: "ollie",
+    brand: "Ollie",
+    title: "Ollie",
+    description: "Proteção solar e cuidados diários para a pele.",
+    coupon: "BLOGDAPRI10",
+    url: "https://meuollie.com.br/?utm_source=afiliados&utm_medium=social&utm_campaign=BLOGDAPRI10",
+    category: "Skincare",
+    type: "coupon",
+    featured: true,
+  },
+  {
+    id: "belezanaweb",
+    brand: "Beleza na Web",
+    title: "Loja da Pri na Beleza na Web",
+    description: "Confira produtos de beleza selecionados pela Pri.",
+    url: "https://www.belezanaweb.com.br/blogdapriscilaa/?tag=blogdapriscilaa&utm_source=socialcommerce&utm_medium=afiliados&utm_campaign=blogdapriscilaa",
+    category: "Beleza",
+    type: "store",
+    featured: true,
+  },
+  {
+    id: "maria-margarida",
+    brand: "Maria Margarida",
+    title: "Maria Margarida",
+    description: "Maquiagem brasileira de alta resistência.",
+    url: "https://www.mariamargarida.com.br/?utm_campaign=blogdapriscilaa&utm_source=flipnet",
+    category: "Maquiagem",
+    type: "affiliate",
+  },
+  {
+    id: "magalu",
+    brand: "Magazine Luiza",
+    title: "Magazine da Pri",
+    description: "Produtos e achadinhos selecionados pela Pri.",
+    url: "https://www.magazinevoce.com.br/magazineblogdapriscilaa/",
+    category: "Achadinhos",
+    type: "store",
+    featured: true,
+  },
+  {
+    id: "shopee",
+    brand: "Shopee",
+    title: "Achadinhos da Pri na Shopee",
+    description: "Confira ofertas, produtos e achadinhos selecionados.",
+    url: "https://shopee.com.br/?uls_trackid=531f10tu00nk&utm_campaign=id_a950k9pgHu&utm_content=----&utm_medium=affiliates&utm_source=an_18378210608&utm_term=d8aajdxgu3i7",
+    category: "Achadinhos",
+    type: "affiliate",
+    featured: true,
+  },
+  {
+    id: "happy-hair",
+    brand: "Happy Hair",
+    title: "Happy Hair",
+    description: "Produtos para cuidados com cabelos, unhas e pele.",
+    url: "https://www.happyhair.com.br/?ref=priscilaalmeidanyn",
+    category: "Cabelos",
+    type: "affiliate",
+  },
+  {
+    id: "cea",
+    brand: "C&A",
+    title: "C&A",
+    description: "Moda, beleza e novidades selecionadas pela Pri.",
+    url: "https://www.cea.com.br/minhacea/blogdapriscilaa",
+    category: "Moda",
+    type: "affiliate",
+  },
+  {
+    id: "care",
+    brand: "CARE Natural Beauty",
+    title: "CARE Natural Beauty",
+    description: "Skincare e maquiagem com foco em beleza e cuidados.",
+    url: "https://carenb.com/?influ=blogdapriscilaa",
+    category: "Skincare",
+    type: "affiliate",
+  },
+  {
+    id: "davene",
+    brand: "Davene",
+    title: "Davene",
+    description: "Produtos de beleza e cuidados pessoais.",
+    url: "https://www.davene.net.br/?parceiro=blogdapriscilaa&sc=3",
+    category: "Beleza",
+    type: "affiliate",
+  },
+  {
+    id: "brae",
+    brand: "Braé",
+    title: "Braé Hair Care",
+    description: "Produtos profissionais para cuidados com os cabelos.",
+    url: "https://www.brae.com.br/?parceiro=blogdapriscilaa",
+    category: "Cabelos",
+    type: "affiliate",
+  },
+  {
+    id: "principia",
+    brand: "Principia",
+    title: "Principia",
+    description: "Dermocosméticos e produtos para cuidados com a pele.",
+    url: "https://www.principiaskin.com/couponcredit/credit",
+    category: "Skincare",
+    type: "offer",
+  },
+  {
+    id: "collection",
+    brand: "My Collection",
+    title: "Minha seleção",
+    description: "Produtos selecionados pela Pri.",
+    url: "https://collshp.com/blogdapriscilaa?view=storefront",
+    category: "Achadinhos",
+    type: "store",
+  },
+  {
+    id: "adesivos-mood",
+    brand: "Adesivos Mood",
+    title: "Adesivos Mood",
+    description: "Conheça os Adesivos Mood.",
+    url: "https://pay.kiwify.com.br/EyBaUQp?afid=wpDtRc2Y",
+    category: "Outros",
+    type: "affiliate",
+  },
+];

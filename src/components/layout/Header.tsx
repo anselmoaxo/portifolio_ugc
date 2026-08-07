@@ -15,10 +15,10 @@ const links = [
   ["Contato", "/#contato"],
 ];
 
-function CuponsLink({ onClick, mobile = false }: { onClick?: () => void; mobile?: boolean }) {
+function DiscountsLink({ onClick, mobile = false }: { onClick?: () => void; mobile?: boolean }) {
   return (
     <Link
-      href="/cupons"
+      href="/descontos"
       onClick={onClick}
       className={
         mobile
@@ -28,7 +28,7 @@ function CuponsLink({ onClick, mobile = false }: { onClick?: () => void; mobile?
     >
       <span className="absolute inset-0 rounded-full border-2 border-white/40 opacity-75 animate-ping [animation-duration:2s]" aria-hidden="true" />
       <TicketPercent size={mobile ? 20 : 14} className="relative" />
-      <span className="relative">Meus Cupons</span>
+      <span className="relative">Descontos da Pri</span>
     </Link>
   );
 }
@@ -58,7 +58,7 @@ export function Header() {
           {links.map(([label, href], i) => (
             <span key={href} className="inline-flex items-center gap-5">
               <Link href={href} prefetch={href === "/portfolio" ? false : undefined} className="nav-link">{label}</Link>
-              {i === 1 && <CuponsLink />}
+              {i === 1 && <DiscountsLink />}
             </span>
           ))}
           <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="nav-link inline-flex items-center gap-1" aria-label="Instagram da Priscila — abre em nova aba"><Instagram size={14} /></a>
@@ -82,7 +82,7 @@ export function Header() {
           <div className="mx-auto flex max-w-lg flex-col">
             <div className="mb-3"><LanguageSwitcher /></div>
             {links.map(([label, href], index) => <Link key={href} href={href} prefetch={href === "/portfolio" ? false : undefined} onClick={() => setOpen(false)} className="border-b border-brown/10 py-3 font-display text-xl"><span className="mr-4 text-xs text-rose-700">{String(index + 1).padStart(2, "0")}</span>{label}</Link>)}
-            <div className="pt-4"><CuponsLink mobile onClick={() => setOpen(false)} /></div>
+            <div className="pt-4"><DiscountsLink mobile onClick={() => setOpen(false)} /></div>
             <Link href="/#contato" onClick={() => setOpen(false)} className="button-primary mt-6 justify-center">Solicitar parceria</Link>
           </div>
         </nav>
