@@ -13,6 +13,7 @@ const buttonLabels: Record<Discount["type"], string> = {
 };
 
 const categoryOrder = [
+  "Favoritos",
   "Achadinhos",
   "Beleza",
   "Cabelos",
@@ -82,7 +83,9 @@ function DiscountCard({ discount, featured = false }: { discount: Discount; feat
         rel="noopener noreferrer sponsored"
         className="button-primary mt-4 min-h-12 w-full text-center"
       >
-        {buttonLabels[discount.type]}
+        {discount.category === "Favoritos" && !discount.coupon
+          ? "Conhecer a marca"
+          : buttonLabels[discount.type]}
         <ExternalLink size={15} />
       </a>
     </article>
@@ -90,14 +93,17 @@ function DiscountCard({ discount, featured = false }: { discount: Discount; feat
 }
 
 export function DiscountsCatalog({ discounts }: { discounts: Discount[] }) {
-  const availableCategories = new Set(discounts.map((discount) => discount.category));
+  const sortedDiscounts = [...discounts].sort(
+    (a, b) => (a.priority ?? 999) - (b.priority ?? 999),
+  );
+  const availableCategories = new Set(sortedDiscounts.map((discount) => discount.category));
   const categories = ["Todos", ...categoryOrder.filter((item) => availableCategories.has(item))];
   const [category, setCategory] = useState("Todos");
-  const featured = discounts.filter((discount) => discount.featured);
+  const featured = sortedDiscounts.filter((discount) => discount.featured);
   const visible =
     category === "Todos"
-      ? discounts
-      : discounts.filter((discount) => discount.category === category);
+      ? sortedDiscounts
+      : sortedDiscounts.filter((discount) => discount.category === category);
 
   return (
     <>
@@ -120,9 +126,9 @@ export function DiscountsCatalog({ discounts }: { discounts: Discount[] }) {
       </div>
 
       {category === "Todos" && (
-        <section className="mt-12" aria-labelledby="destaques-da-pri">
-          <h2 id="destaques-da-pri" className="font-display text-3xl text-ink md:text-4xl">
-            Destaques da <span className="italic text-rose-700">Pri</span>
+        <section className="mt-12" aria-labelledby="meus-favoritos">
+          <h2 id="meus-favoritos" className="font-display text-3xl text-ink md:text-4xl">
+            Meus <span className="italic text-rose-700">favoritos</span>
           </h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((discount) => (

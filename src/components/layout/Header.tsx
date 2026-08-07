@@ -28,7 +28,7 @@ function DiscountsLink({ onClick, mobile = false }: { onClick?: () => void; mobi
     >
       <span className="absolute inset-0 rounded-full border-2 border-white/40 opacity-75 animate-ping [animation-duration:2s]" aria-hidden="true" />
       <TicketPercent size={mobile ? 20 : 14} className="relative" />
-      <span className="relative">Descontos da Pri</span>
+      <span className="relative">Meus descontos</span>
     </Link>
   );
 }

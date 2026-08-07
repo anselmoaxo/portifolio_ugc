@@ -8,9 +8,44 @@ export type Discount = {
   category: string;
   type: "coupon" | "affiliate" | "store" | "offer";
   featured?: boolean;
+  priority?: number;
 };
 
 export const discounts: Discount[] = [
+  {
+    id: "jungle",
+    brand: "Jungle",
+    title: "Jungle",
+    description: "Conheça os produtos e benefícios da Jungle selecionados pela Pri.",
+    url: "http://sandwiche.me/blogdapriscilaa/links/69b95",
+    category: "Favoritos",
+    type: "affiliate",
+    featured: true,
+    priority: 1,
+  },
+  {
+    id: "plant-power",
+    brand: "Plant Power",
+    title: "Plant Power",
+    description: "Conheça os produtos e benefícios da Plant Power selecionados pela Pri.",
+    url: "https://sandwiche.me/blogdapriscilaa/links/d10bb",
+    category: "Favoritos",
+    type: "affiliate",
+    featured: true,
+    priority: 2,
+  },
+  {
+    id: "new-dental-care",
+    brand: "New Dental Care",
+    title: "New Dental Care",
+    description: "Confira os produtos e benefícios da New Dental Care indicados pela Pri.",
+    coupon: "BLOGDAPRI",
+    url: "https://newdentalcare.com.br//coupon-code/BLOGDAPRI/sc-page/shop",
+    category: "Favoritos",
+    type: "coupon",
+    featured: true,
+    priority: 3,
+  },
   {
     id: "gummy",
     brand: "Gummy",
@@ -28,7 +63,7 @@ export const discounts: Discount[] = [
     title: "Ollie",
     description: "Proteção solar e cuidados diários para a pele.",
     coupon: "BLOGDAPRI10",
-    url: "https://meuollie.com.br/?utm_source=afiliados&utm_medium=social&utm_campaign=BLOGDAPRI10",
+    url: "https://ollie.pilealabs.link/blogdapriscilaa/2HJgvc",
     category: "Skincare",
     type: "coupon",
     featured: true,
@@ -38,7 +73,7 @@ export const discounts: Discount[] = [
     brand: "Beleza na Web",
     title: "Loja da Pri na Beleza na Web",
     description: "Confira produtos de beleza selecionados pela Pri.",
-    url: "https://www.belezanaweb.com.br/blogdapriscilaa/?tag=blogdapriscilaa&utm_source=socialcommerce&utm_medium=afiliados&utm_campaign=blogdapriscilaa",
+    url: "https://blz.to/r/UW3_lC71kW",
     category: "Beleza",
     type: "store",
     featured: true,
