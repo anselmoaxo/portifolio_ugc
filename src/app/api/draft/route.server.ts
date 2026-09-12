@@ -1,6 +1,7 @@
+export const dynamic = "force-static";
+
 import { cmsEnabled } from "@/config/features";
 import { safeRedirectPath } from "@/lib/safe-redirect";
-import { draftMode } from "next/headers";
 
 export async function GET(request: Request) {
   if (!cmsEnabled) return new Response(null, { status: 404 });
@@ -15,8 +16,13 @@ export async function GET(request: Request) {
     return Response.json({ message: "Destino inválido." }, { status: 400 });
   }
 
-  const draft = await draftMode();
-  draft.enable();
+  try {
+    const { draftMode } = await import("next/headers");
+    const draft = await draftMode();
+    draft.enable();
+  } catch {
+    // Ignora draftMode durante geração puramente estática
+  }
+
   return Response.redirect(new URL(redirectPath, url.origin));
 }
-

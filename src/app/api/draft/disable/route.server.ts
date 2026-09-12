@@ -1,10 +1,18 @@
-import { cmsEnabled } from "@/config/features";
-import { draftMode } from "next/headers";
+export const dynamic = "force-static";
+
+import { safeRedirectPath } from "@/lib/safe-redirect";
 
 export async function GET(request: Request) {
-  if (!cmsEnabled) return new Response(null, { status: 404 });
-  const draft = await draftMode();
-  draft.disable();
-  return Response.redirect(new URL("/", request.url));
-}
+  const url = new URL(request.url);
+  const redirectPath = safeRedirectPath(url.searchParams.get("redirect") || "/", "");
 
+  try {
+    const { draftMode } = await import("next/headers");
+    const draft = await draftMode();
+    draft.disable();
+  } catch {
+    // Ignora draftMode durante exportação estática
+  }
+
+  return Response.redirect(new URL(redirectPath || "/", url.origin));
+}
