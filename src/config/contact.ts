@@ -1,0 +1,21 @@
+export const CONTACT = {
+  instagram: "https://www.instagram.com/blogdapriscilaa/",
+  instagramHandle: "@blogdapriscilaa",
+  email: "blogdapriscilaa@gmail.com",
+  whatsapp: "5511930303849",
+  tiktok: "https://www.tiktok.com/@blogdapriscila_",
+} as const;
+
+export const whatsappDefaultMessage =
+  "Olá, Priscila! Conheci seu portfólio e gostaria de conversar sobre uma parceria UGC.";
+
+export const isWhatsAppConfigured = /^\d{12,13}$/.test(CONTACT.whatsapp);
+
+export function whatsappUrl(message: string) {
+  return whatsappUrlFor(CONTACT.whatsapp, message);
+}
+
+export function whatsappUrlFor(number: string, message: string) {
+  if (!/^\d{12,13}$/.test(number)) return "#contato";
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
