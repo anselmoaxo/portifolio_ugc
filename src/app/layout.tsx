@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { cmsEnabled } from "@/config/features";
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SITE, siteUrl, siteIndexable } from "@/config/site";
 import { seoDescription, seoTitle } from "@/lib/seo";
 import { getSiteSettings } from "@/sanity/content";
-import { sanityEnv } from "@/sanity/env";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,7 +27,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [{ isEnabled }, settings] = await Promise.all([cmsEnabled ? draftMode() : Promise.resolve({ isEnabled: false }), getSiteSettings()]);
+  const settings = await getSiteSettings();
   return (
     <html data-scroll-behavior="smooth" lang="pt-BR" className="h-full antialiased">
       <body className="min-h-full">
@@ -40,7 +36,6 @@ export default async function RootLayout({
         <main id="conteudo-principal">{children}</main>
         <Footer settings={settings} />
         <WhatsAppButton settings={settings} />
-        {isEnabled && sanityEnv.configured && <VisualEditing />}
       </body>
     </html>
   );

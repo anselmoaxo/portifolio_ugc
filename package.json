@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
-    "start": "next start",
+    "start": "node scripts/serve-static.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",

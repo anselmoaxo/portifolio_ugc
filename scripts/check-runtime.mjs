@@ -1,9 +1,7 @@
 import { spawn } from "node:child_process";
-import { createRequire } from "node:module";
 import { setTimeout } from "node:timers/promises";
-const require = createRequire(import.meta.url);
 const base = "http://127.0.0.1:3100";
-const server = spawn(process.execPath, [require.resolve("next/dist/bin/next"), "start", "--hostname", "127.0.0.1", "--port", "3100"], { stdio: "inherit", windowsHide: true });
+const server = spawn(process.execPath, ["scripts/serve-static.mjs"], { stdio: "inherit", windowsHide: true, env: { ...process.env, PORT: "3100" } });
 let failure;
 server.on("error", (error) => { failure = error; });
 try {
