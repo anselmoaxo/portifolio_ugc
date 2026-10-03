@@ -28,3 +28,11 @@ test("fallback local possui conteúdo essencial", () => {
   assert.ok(partnerBrands.length > 0);
 });
 
+
+test("CMS só é ativado explicitamente no build", async () => {
+  const { isCmsEnabled } = await import("../src/config/features.ts");
+  assert.equal(isCmsEnabled({}), false);
+  assert.equal(isCmsEnabled({ SITE_CMS_ENABLED: "false" }), false);
+  assert.equal(isCmsEnabled({ SITE_CMS_ENABLED: "1" }), false);
+  assert.equal(isCmsEnabled({ SITE_CMS_ENABLED: " TRUE " }), true);
+});

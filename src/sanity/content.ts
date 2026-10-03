@@ -6,7 +6,6 @@ import { getSanityClient } from "./client";
 import { brandsQuery, portfolioQuery, servicesQuery, siteSettingsQuery } from "./queries";
 import type { BrandItem, HomeContent, ServiceItem, SiteSettings } from "@/types/cms";
 import type { PortfolioVideo } from "@/types/content";
-import { draftMode } from "next/headers";
 import { cache } from "react";
 import { cmsEnabled } from "@/config/features";
 
@@ -58,20 +57,24 @@ function withTimeout<T>(promise: Promise<T>, milliseconds = 3500): Promise<T> {
 
 export const getHomeContent = cache(async (): Promise<HomeContent> => {
   if (!cmsEnabled) return localHomeContent;
-  const { isEnabled } = await draftMode();
-  const client = getSanityClient(isEnabled);
+  // Static export: content is read once at build time; a Sanity webhook
+  // triggers a new build when something is published.
+  const client = getSanityClient();
   if (!client) return localHomeContent;
 
   try {
     const [settings, portfolio, services, brands] = await withTimeout(Promise.all([
-      client.fetch<Partial<SiteSettings> | null>(siteSettingsQuery, {}, { next: { revalidate: 300, tags: ["siteSettings"] } }),
-      client.fetch<PortfolioVideo[]>(portfolioQuery, {}, { next: { revalidate: 300, tags: ["portfolioItem"] } }),
-      client.fetch<ServiceItem[]>(servicesQuery, {}, { next: { revalidate: 300, tags: ["service"] } }),
-      client.fetch<BrandItem[]>(brandsQuery, {}, { next: { revalidate: 300, tags: ["brand"] } }),
+      client.fetch<Partial<SiteSettings> | null>(siteSettingsQuery),
+      client.fetch<PortfolioVideo[]>(portfolioQuery),
+      client.fetch<ServiceItem[]>(servicesQuery),
+      client.fetch<BrandItem[]>(brandsQuery),
     ]));
 
+    // An empty dataset (content not migrated yet) must not blank the public site.
+    if (!settings) return localHomeContent;
+
     return {
-      settings: { ...localSettings, ...(settings ?? {}) },
+      settings: { ...localSettings, ...settings },
       portfolio: portfolio ?? [],
       services: services ?? [],
       brands: brands ?? [],

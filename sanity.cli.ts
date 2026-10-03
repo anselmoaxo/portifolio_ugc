@@ -2,8 +2,9 @@ import { defineCliConfig } from "sanity/cli";
 
 export default defineCliConfig({
   api: {
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "project-not-configured",
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "development",
+    projectId: process.env.SANITY_STUDIO_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "project-not-configured",
+    dataset: process.env.SANITY_STUDIO_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || "development",
   },
+  // Hosted Studio address: https://<SANITY_STUDIO_HOSTNAME>.sanity.studio
+  studioHost: process.env.SANITY_STUDIO_HOSTNAME || undefined,
 });
-

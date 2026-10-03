@@ -20,7 +20,11 @@ npm start
 
 O build exporta HTML, CSS, JavaScript e imagens para `out/`. Publique o conteudo dessa pasta em uma hospedagem estatica, sem servidor Next.js. `npm start` apenas serve os arquivos exportados para visualizacao local. Atualizacoes de conteudo exigem novo build.
 
-CMS, autenticacao, painel, Studio, preview e webhooks estao desativados. As entradas anteriores foram preservadas como `page.server.tsx` e `route.server.ts`, nomes que o Next.js nao registra como rotas. Flags de ambiente nao reativam esses recursos nesta versao.
+Painel `/admin`, autenticacao, Studio embutido, preview e rotas de webhook estao desativados, porque o GitHub Pages nao executa servidor. As entradas anteriores foram preservadas como `page.server.tsx` e `route.server.ts`, nomes que o Next.js nao registra como rotas.
+
+## Area administrativa
+
+O conteudo pode ser editado no Sanity Studio hospedado (`https://<SANITY_STUDIO_HOSTNAME>.sanity.studio`). Com `SITE_CMS_ENABLED=true` no build, o site le o conteudo publicado no Sanity; cada publicacao dispara um novo deploy via webhook. Sem essa variavel, o build usa o conteudo local. Configuracao passo a passo em [docs/PLANO-AREA-ADMIN.md](docs/PLANO-AREA-ADMIN.md).
 
 ## Seguranca
 

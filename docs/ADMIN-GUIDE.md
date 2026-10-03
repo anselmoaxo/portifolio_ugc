@@ -1,5 +1,7 @@
 # Guia do painel administrativo
 
+> O site publicado no GitHub Pages usa o **Sanity Studio hospedado** como painel. O `/admin` descrito abaixo só funciona com hospedagem que execute servidor. Veja [PLANO-AREA-ADMIN.md](PLANO-AREA-ADMIN.md).
+
 ## Endereços
 
 - Login personalizado: `/login`
