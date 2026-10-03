@@ -94,7 +94,7 @@ function DiscountCard({ discount, featured = false }: { discount: Discount; feat
 
 export function DiscountsCatalog({ discounts }: { discounts: Discount[] }) {
   const sortedDiscounts = [...discounts].sort(
-    (a, b) => (a.priority ?? 999) - (b.priority ?? 999),
+    (a, b) => (Number(a.priority) || 999) - (Number(b.priority) || 999),
   );
   const availableCategories = new Set(sortedDiscounts.map((discount) => discount.category));
   const categories = ["Todos", ...categoryOrder.filter((item) => availableCategories.has(item))];
