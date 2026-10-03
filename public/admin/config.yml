@@ -1,16 +1,29 @@
-# Painel administrativo (Decap CMS). O login por e-mail e senha é feito pelo
-# DecapBridge (https://decapbridge.com); cada "Publicar" grava um commit na main e
-# o workflow "Deploy GitHub Pages" publica o site em cerca de um minuto.
+# Painel administrativo (Decap CMS). O login é feito pelo DecapBridge
+# (https://decapbridge.com); cada "Publicar" grava um commit na main e o workflow
+# "Deploy GitHub Pages" publica o site em cerca de um minuto.
 backend:
   name: git-gateway
   repo: anselmoaxo/portifolio_ugc
   branch: main
-  # Valores do painel do DecapBridge (Sites → Config). O ID do site não é segredo.
-  identity_url: https://auth.decapbridge.com/sites/DECAPBRIDGE_SITE_ID
+  # DecapBridge (login por e-mail/senha, Google ou Microsoft). IDs públicos, sem segredo.
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/ad5e65a5-6741-4f21-8fd1-3b22df419499/pkce
+  auth_token_endpoint: /sites/ad5e65a5-6741-4f21-8fd1-3b22df419499/token
   gateway_url: https://gateway.decapbridge.com
   commit_messages:
-    update: "conteúdo: atualiza {{slug}} pelo painel"
-    uploadMedia: "conteúdo: envia {{path}} pelo painel"
+    create: "conteúdo: cria {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> pelo painel"
+    update: "conteúdo: atualiza {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> pelo painel"
+    delete: "conteúdo: remove {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> pelo painel"
+    uploadMedia: "conteúdo: envia “{{path}}” - {{author-name}} <{{author-login}}> pelo painel"
+    deleteMedia: "conteúdo: remove “{{path}}” - {{author-name}} <{{author-login}}> pelo painel"
+    openAuthoring: "{{message}} - {{author-name}} <{{author-login}}> pelo painel"
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
 
 locale: pt
 site_url: https://blogdapriscila.com.br

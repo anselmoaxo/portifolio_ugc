@@ -29,9 +29,9 @@ Painel /admin/ ──e-mail e senha──▶ edita textos e fotos ──Publicar
 1. Crie uma conta gratuita em https://decapbridge.com.
 2. Adicione o site:
    - Repositório: `anselmoaxo/portifolio_ugc`
-   - Token do GitHub: um *fine-grained personal access token* restrito a este repositório com **Contents: Read and write** (o mesmo tipo usado antes no painel).
+   - Token do GitHub: um *fine-grained personal access token* restrito a este repositório com **Contents** e **Pull requests** em *Read and write*.
    - Endereço do painel: `https://blogdapriscila.com.br/admin/`
-3. O DecapBridge mostra o `identity_url` com o ID do site. Substitua `DECAPBRIDGE_SITE_ID` em `public/admin/config.yml` por esse ID (ou envie o ID para quem mantém o site).
+3. O DecapBridge mostra o trecho de configuração (`backend`, `auth`). Ele já está aplicado em `public/admin/config.yml` (site `ad5e65a5-…`, autenticação PKCE).
 4. Em **Collaborators**, convide a Priscila pelo e-mail dela. Ela recebe um link, cria a senha e já pode entrar em `/admin/`.
 
 Para remover o acesso de alguém, retire a pessoa dos colaboradores no DecapBridge.
