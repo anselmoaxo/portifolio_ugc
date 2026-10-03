@@ -1,19 +1,19 @@
 # Guia do painel administrativo
 
-O painel fica em `/admin/` (por exemplo `https://blogdapriscila.com.br/admin/`). A configuração inicial e o funcionamento estão em [PLANO-AREA-ADMIN.md](PLANO-AREA-ADMIN.md).
+O painel fica em `/admin/` (por exemplo `https://blogdapriscila.com.br/admin/`). Entre com o e-mail e a senha criados pelo convite. A configuração inicial e o funcionamento estão em [PLANO-AREA-ADMIN.md](PLANO-AREA-ADMIN.md).
 
 ## Trocar uma foto
 
 1. Entre em `/admin/` e abra **Textos e fotos**.
 2. Escolha **Página inicial** (foto principal e foto de perfil), **Portfólio** (capas) ou **Marcas** (logotipos).
 3. Clique na imagem, envie o arquivo novo (JPEG, PNG ou WebP) e preencha a descrição da foto.
-4. Clique em **Save**.
+4. Clique em **Publicar**.
 
 ## Mudar um texto
 
 1. Abra **Textos e fotos** → **Página inicial**.
 2. Edite o título, a apresentação, o "Sobre mim", os contatos ou os textos para o Google.
-3. Clique em **Save**.
+3. Clique em **Publicar**.
 
 ## Portfólio, serviços e marcas
 
@@ -21,8 +21,8 @@ Cada lista permite adicionar, editar, reordenar (arrastando) e remover itens. Em
 
 ## Quando a mudança aparece
 
-Cada **Save** grava um commit na branch `main`. O workflow **Deploy GitHub Pages** reconstrói o site; em poucos minutos a alteração está no ar. Se o build falhar, o site anterior continua publicado e o erro aparece em Actions.
+Cada **Publicar** grava um commit na branch `main`. O workflow **Deploy GitHub Pages** reconstrói o site; em poucos minutos a alteração está no ar. Se o build falhar, o site anterior continua publicado e o erro aparece em Actions.
 
 ## Remover o acesso de alguém
 
-Revogue o token da pessoa em github.com/settings/personal-access-tokens ou retire-a dos colaboradores do repositório.
+No DecapBridge, abra o site e remova a pessoa da lista de colaboradores.
