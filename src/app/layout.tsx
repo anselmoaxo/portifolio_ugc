@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { ANALYTICS } from "@/config/analytics";
 import { SITE, siteUrl, siteIndexable } from "@/config/site";
 import { seoDescription, seoTitle } from "@/lib/seo";
 import { getSiteSettings } from "@/content";
@@ -36,6 +38,9 @@ export default async function RootLayout({
         <main id="conteudo-principal">{children}</main>
         <Footer settings={settings} />
         <WhatsAppButton settings={settings} />
+        {ANALYTICS.websiteId ? (
+          <Script src={ANALYTICS.scriptUrl} data-website-id={ANALYTICS.websiteId} data-domains={ANALYTICS.domains} strategy="afterInteractive" />
+        ) : null}
       </body>
     </html>
   );
