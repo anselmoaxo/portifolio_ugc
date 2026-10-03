@@ -1,60 +1,60 @@
 {
   "items": [
     {
-      "id": "jungle",
+      "priority": 1,
       "brand": "Jungle",
-      "title": "Jungle",
-      "description": "Conheça os produtos e benefícios da Jungle selecionados pela Pri.",
+      "featured": true,
       "url": "https://sandwiche.me/blogdapriscilaa/links/69b95",
-      "category": "Favoritos",
+      "title": "Jungle",
       "type": "affiliate",
-      "featured": true,
-      "priority": 1
+      "id": "jungle",
+      "description": "Conheça os produtos e benefícios da Jungle selecionados pela Priscila.",
+      "category": "Favoritos"
     },
     {
-      "id": "plant-power",
+      "priority": 2,
       "brand": "Plant Power",
-      "title": "Plant Power",
-      "description": "Conheça os produtos e benefícios da Plant Power selecionados pela Pri.",
+      "featured": true,
       "url": "https://sandwiche.me/blogdapriscilaa/links/d10bb",
-      "category": "Favoritos",
+      "title": "Plant Power",
       "type": "affiliate",
-      "featured": true,
-      "priority": 2
+      "id": "plant-power",
+      "description": "Conheça os produtos e benefícios da Plant Power selecionados pela Pri.",
+      "category": "Favoritos"
     },
     {
-      "id": "new-dental-care",
-      "brand": "New Dental Care",
-      "title": "New Dental Care",
-      "description": "Confira os produtos e benefícios da New Dental Care indicados pela Pri.",
+      "priority": 3,
       "coupon": "BLOGDAPRI",
-      "url": "https://newdentalcare.com.br//coupon-code/BLOGDAPRI/sc-page/shop",
-      "category": "Favoritos",
-      "type": "coupon",
+      "brand": "New Dental Care",
       "featured": true,
-      "priority": 3
+      "url": "https://newdentalcare.com.br//coupon-code/BLOGDAPRI/sc-page/shop",
+      "title": "New Dental Care",
+      "type": "coupon",
+      "id": "new-dental-care",
+      "description": "Confira os produtos e benefícios da New Dental Care indicados pela Pri.",
+      "category": "Favoritos"
     },
     {
-      "id": "gummy",
-      "brand": "Gummy",
-      "title": "Gummy",
-      "description": "Vitaminas e cuidados para cabelo, pele e bem-estar.",
       "coupon": "GUMMYPRISCILAA",
+      "brand": "Gummy",
+      "featured": true,
       "url": "https://www.gummy.com.br/",
-      "category": "Saúde & Beleza",
+      "title": "Gummy",
       "type": "coupon",
-      "featured": true
+      "id": "gummy",
+      "description": "Vitaminas e cuidados para cabelo, pele e bem-estar.",
+      "category": "Saúde & Beleza"
     },
     {
-      "id": "ollie",
-      "brand": "Ollie",
-      "title": "Ollie",
-      "description": "Proteção solar e cuidados diários para a pele.",
       "coupon": "BLOGDAPRI10",
+      "brand": "Ollie",
+      "featured": true,
       "url": "https://ollie.pilealabs.link/blogdapriscilaa/2HJgvc",
-      "category": "Skincare",
+      "title": "Ollie",
       "type": "coupon",
-      "featured": true
+      "id": "ollie",
+      "description": "Proteção solar e cuidados diários para a pele.",
+      "category": "Skincare"
     },
     {
       "id": "belezanaweb",
