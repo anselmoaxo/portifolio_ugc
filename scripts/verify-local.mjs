@@ -24,6 +24,8 @@ assert.equal(admin.status, 200, "/admin/");
 const adminHtml = await admin.text();
 assert.match(adminHtml, /noindex/);
 assert.match(adminHtml, /decap-cms@/);
+assert.doesNotMatch(adminHtml, /unpkg\.com|jsdelivr/, "admin must not load code from a CDN");
+assert.equal((await fetch(new URL("/admin/vendor/decap-cms.js", base))).status, 200, "/admin/vendor/decap-cms.js");
 assert.equal((await fetch(new URL("/admin/config.yml", base))).status, 200, "/admin/config.yml");
 console.log("PASS admin panel /admin/");
 for (const path of ["/login/", "/recuperar-senha/", "/redefinir-senha/", "/studio/", "/auth/callback/", "/api/draft/", "/api/draft/disable/", "/api/revalidate/"]) {

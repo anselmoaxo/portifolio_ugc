@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Decap CMS copied at build time (scripts/vendor-decap.mjs).
+    "public/admin/vendor/**",
   ]),
 ]);
 
