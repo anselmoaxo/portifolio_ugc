@@ -15,13 +15,15 @@ O painel fica em `/admin/` (por exemplo `https://blogdapriscila.com.br/admin/`).
 2. Edite o título, a apresentação, o "Sobre mim", os contatos ou os textos para o Google.
 3. Clique em **Publicar**.
 
-## Portfólio, serviços e marcas
+## Portfólio, descontos, serviços e marcas
 
 Cada lista permite adicionar, editar, reordenar (arrastando) e remover itens. Em **Seções visíveis** é possível esconder uma seção inteira do site.
 
+Em **Descontos e cupons** ficam os links e cupons da página Descontos da Pri. Deixe o código do cupom vazio quando for só um link. O campo **Ordem** define quem aparece primeiro (número menor primeiro).
+
 ## Quando a mudança aparece
 
-Cada **Publicar** grava um commit na branch `main`. O workflow **Deploy GitHub Pages** reconstrói o site; em poucos minutos a alteração está no ar. Se o build falhar, o site anterior continua publicado e o erro aparece em Actions.
+Cada **Publicar** grava um commit na branch `main`. O workflow **Deploy GitHub Pages** reconstrói o site; em poucos minutos a alteração está no ar. Se ainda aparecer a versão antiga, atualize a página com Ctrl+Shift+R (no celular, feche e abra a aba de novo). Se o build falhar, o site anterior continua publicado e o erro aparece em Actions.
 
 ## Remover o acesso de alguém
 

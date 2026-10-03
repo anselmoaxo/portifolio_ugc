@@ -114,6 +114,28 @@ collections:
               - { name: featured, label: Destaque, widget: boolean, required: false }
               - { name: externalUrl, label: Link da publicação, widget: string, required: false }
 
+      - name: descontos
+        label: Descontos e cupons
+        file: src/content/discounts.json
+        format: json
+        fields:
+          - name: items
+            label: Descontos
+            label_singular: Desconto
+            widget: list
+            summary: "{{fields.brand}} ({{fields.category}})"
+            fields:
+              - { name: id, label: Identificador, widget: string, hint: "Qualquer código único, sem espaços. Exemplo: nome-da-marca." }
+              - { name: brand, label: Marca, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text }
+              - { name: coupon, label: Código do cupom, widget: string, required: false, hint: "Deixe vazio quando for só link." }
+              - { name: url, label: Link, widget: string, hint: "Endereço completo, começando com https://" }
+              - { name: category, label: Categoria, widget: select, options: [Favoritos, Achadinhos, Beleza, Cabelos, Maquiagem, Skincare, "Saúde & Beleza", Moda, Outros] }
+              - { name: type, label: Tipo, widget: select, default: affiliate, options: [{ label: Cupom, value: coupon }, { label: Link de afiliado, value: affiliate }, { label: Loja, value: store }, { label: Oferta, value: offer }] }
+              - { name: featured, label: Destaque, widget: boolean, required: false }
+              - { name: priority, label: Ordem, widget: number, value_type: int, required: false, hint: "Número menor aparece primeiro." }
+
       - name: servicos
         label: Serviços
         file: src/content/services.json
