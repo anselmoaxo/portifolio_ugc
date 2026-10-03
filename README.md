@@ -22,14 +22,14 @@ O build exporta HTML, CSS, JavaScript e imagens para `out/`. Publique o conteudo
 
 ## Area administrativa
 
-Fotos e textos sao editados no painel em `/admin/` (Sveltia CMS), que grava os arquivos de `src/content/` direto no GitHub; cada alteracao dispara o deploy. Configuracao e uso em [docs/PLANO-AREA-ADMIN.md](docs/PLANO-AREA-ADMIN.md).
+Fotos e textos sao editados no painel em `/admin/` (Decap CMS, login por e-mail via DecapBridge), que grava os arquivos de `src/content/` direto no GitHub; cada alteracao dispara o deploy. Configuracao e uso em [docs/PLANO-AREA-ADMIN.md](docs/PLANO-AREA-ADMIN.md).
 
 ## Seguranca
 
 - Nao reutilize tokens, remotes ou credenciais do projeto original; nunca publique arquivos `.env`.
 - Indexacao fica desativada por padrao. Para publicar, configure `NEXT_PUBLIC_SITE_URL=https://seu-dominio-real` e `NEXT_PUBLIC_SITE_INDEXABLE=true` antes do build.
 - Headers HTTP de seguranca devem ser configurados na hospedagem estatica. A politica em `src/lib/security-headers.ts` serve como referencia; o Next.js nao aplica headers aos arquivos exportados.
-- O painel `/admin/` usa tokens do GitHub de cada pessoa; nenhum token fica no repositorio ou no site.
+- O painel `/admin/` autentica pelo DecapBridge; o token do GitHub fica no DecapBridge, nunca no repositorio ou no site.
 
 ## Verificacoes
 

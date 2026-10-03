@@ -1,12 +1,21 @@
-# Painel administrativo (Sveltia CMS). Cada "Publicar" grava um commit na branch
-# main e o workflow "Deploy GitHub Pages" publica o site em alguns minutos.
+# Painel administrativo (Decap CMS). O login por e-mail e senha é feito pelo
+# DecapBridge (https://decapbridge.com); cada "Publicar" grava um commit na main e
+# o workflow "Deploy GitHub Pages" publica o site em cerca de um minuto.
 backend:
-  name: github
+  name: git-gateway
   repo: anselmoaxo/portifolio_ugc
   branch: main
+  # Valores do painel do DecapBridge (Sites → Config). O ID do site não é segredo.
+  identity_url: https://auth.decapbridge.com/sites/DECAPBRIDGE_SITE_ID
+  gateway_url: https://gateway.decapbridge.com
   commit_messages:
     update: "conteúdo: atualiza {{slug}} pelo painel"
     uploadMedia: "conteúdo: envia {{path}} pelo painel"
+
+locale: pt
+site_url: https://blogdapriscila.com.br
+display_url: https://blogdapriscila.com.br
+logo_url: /icon.svg
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
