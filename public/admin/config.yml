@@ -12,12 +12,12 @@ backend:
   auth_token_endpoint: /sites/ad5e65a5-6741-4f21-8fd1-3b22df419499/token
   gateway_url: https://gateway.decapbridge.com
   commit_messages:
-    create: "conteúdo: cria {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> pelo painel"
-    update: "conteúdo: atualiza {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> pelo painel"
-    delete: "conteúdo: remove {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> pelo painel"
-    uploadMedia: "conteúdo: envia “{{path}}” - {{author-name}} <{{author-login}}> pelo painel"
-    deleteMedia: "conteúdo: remove “{{path}}” - {{author-name}} <{{author-login}}> pelo painel"
-    openAuthoring: "{{message}} - {{author-name}} <{{author-login}}> pelo painel"
+    create: "conteúdo: cria {{collection}} “{{slug}}” - {{author-name}} pelo painel"
+    update: "conteúdo: atualiza {{collection}} “{{slug}}” - {{author-name}} pelo painel"
+    delete: "conteúdo: remove {{collection}} “{{slug}}” - {{author-name}} pelo painel"
+    uploadMedia: "conteúdo: envia “{{path}}” - {{author-name}} pelo painel"
+    deleteMedia: "conteúdo: remove “{{path}}” - {{author-name}} pelo painel"
+    openAuthoring: "{{message}} - {{author-name}} pelo painel"
 
 auth:
   email_claim: email

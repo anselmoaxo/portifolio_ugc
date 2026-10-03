@@ -68,3 +68,6 @@ temp/
 
 # Sanity CLI runtime
 .sanity/
+
+# Decap CMS copied at build time (scripts/vendor-decap.mjs)
+/public/admin/vendor/
