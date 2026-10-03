@@ -22,7 +22,7 @@ export function Brands({ items }: { items: BrandItem[] }) {
             >
               <Image
                 src={resolveMediaPath(brand.image)}
-                alt={brand.name ? `Logotipo da marca ${brand.name}` : (brand.alt ?? "Marca apresentada no Mídia Kit")}
+                alt={brand.name ? `Logotipo da marca ${brand.name}` : (brand.alt || "Marca apresentada no Mídia Kit")}
                 width={160}
                 height={160}
                 sizes="(max-width: 640px) 36vw, (max-width: 1024px) 20vw, 150px"

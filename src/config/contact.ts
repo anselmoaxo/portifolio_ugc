@@ -1,13 +1,11 @@
-export const CONTACT = {
-  instagram: "https://www.instagram.com/blogdapriscilaa/",
-  instagramHandle: "@blogdapriscilaa",
-  email: "blogdapriscilaa@gmail.com",
-  whatsapp: "5511930303849",
-  tiktok: "https://www.tiktok.com/@blogdapriscila_",
-} as const;
+// Editable in the admin panel (/admin/): src/content/site.json
+import siteContent from "../content/site.json" with { type: "json" };
 
-export const whatsappDefaultMessage =
-  "Olá, Priscila! Conheci seu portfólio e gostaria de conversar sobre uma parceria UGC.";
+const { whatsappMessage, ...contact } = siteContent.contact;
+
+export const CONTACT = contact;
+
+export const whatsappDefaultMessage = whatsappMessage;
 
 export const isWhatsAppConfigured = /^\d{12,13}$/.test(CONTACT.whatsapp);
 

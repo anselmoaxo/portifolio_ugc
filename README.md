@@ -24,7 +24,7 @@ Painel `/admin`, autenticacao, Studio embutido, preview e rotas de webhook estao
 
 ## Area administrativa
 
-O conteudo pode ser editado no Sanity Studio hospedado (`https://<SANITY_STUDIO_HOSTNAME>.sanity.studio`). Com `SITE_CMS_ENABLED=true` no build, o site le o conteudo publicado no Sanity; cada publicacao dispara um novo deploy via webhook. Sem essa variavel, o build usa o conteudo local. Configuracao passo a passo em [docs/PLANO-AREA-ADMIN.md](docs/PLANO-AREA-ADMIN.md).
+Fotos e textos sao editados no painel em `/admin/` (Sveltia CMS), que grava os arquivos de `src/content/` direto no GitHub; cada alteracao dispara o deploy. Configuracao e uso em [docs/PLANO-AREA-ADMIN.md](docs/PLANO-AREA-ADMIN.md).
 
 ## Seguranca
 

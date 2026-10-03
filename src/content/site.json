@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "eyebrow": "Influenciadora & criadora de conteúdo UGC",
+    "title": "Beleza real, conteúdo",
+    "titleHighlight": "autêntico",
+    "text": "Transformo produtos de beleza, skincare e bem-estar em conteúdos que conversam de verdade com o público. Naturais, envolventes e feitos para gerar conexão.",
+    "note": "Conteúdo sobre beleza, skincare, cabelos e autocuidado, apresentado com clareza e proximidade.",
+    "image": "/images/foto_inicio.webp",
+    "imageAlt": "Ambiente de gravação UGC com smartphone, produtos de beleza e iluminação natural"
+  },
+  "about": {
+    "title": "Olá! Sou Priscila Almeida",
+    "paragraphs": [
+      "Tenho 39 anos, sou de Guarulhos, São Paulo, e sou apaixonada por tudo relacionado ao universo da beleza, do skincare, dos cabelos e do autocuidado.",
+      "Quero mostrar à minha comunidade como cuidar da beleza de maneira prática e sem complicação. Minha página é um espaço onde compartilho dicas, tutoriais e resenhas de produtos para ajudar minha audiência a se sentir mais confiante.",
+      "Com uma base sólida de seguidores engajados nas redes sociais, sou uma influenciadora digital confiável e respeitada, com uma abordagem autêntica e apaixonada pelo assunto."
+    ],
+    "quote": "Produzo conteúdo digital com uma abordagem autêntica, próxima e apaixonada pelo assunto.",
+    "image": "/images/foto_sobremin.jpeg",
+    "imageAlt": "Priscila Almeida, criadora de conteúdo UGC"
+  },
+  "contact": {
+    "instagram": "https://www.instagram.com/blogdapriscilaa/",
+    "instagramHandle": "@blogdapriscilaa",
+    "email": "blogdapriscilaa@gmail.com",
+    "whatsapp": "5511930303849",
+    "tiktok": "https://www.tiktok.com/@blogdapriscila_",
+    "whatsappMessage": "Olá, Priscila! Conheci seu portfólio e gostaria de conversar sobre uma parceria UGC."
+  },
+  "sections": {
+    "about": true,
+    "metrics": true,
+    "services": true,
+    "portfolio": true,
+    "brands": true,
+    "contact": true
+  },
+  "seo": {
+    "title": "Priscila | Influenciadora e Criadora de Conteúdo UGC",
+    "description": "Conheça o portfólio UGC da Priscila, seus conteúdos, vídeos e trabalhos com marcas.",
+    "image": "/og-image.png"
+  }
+}

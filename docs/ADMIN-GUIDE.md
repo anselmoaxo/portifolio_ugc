@@ -1,50 +1,28 @@
 # Guia do painel administrativo
 
-> O site publicado no GitHub Pages usa o **Sanity Studio hospedado** como painel. O `/admin` descrito abaixo só funciona com hospedagem que execute servidor. Veja [PLANO-AREA-ADMIN.md](PLANO-AREA-ADMIN.md).
+O painel fica em `/admin/` (por exemplo `https://blogdapriscila.com.br/admin/`). A configuração inicial e o funcionamento estão em [PLANO-AREA-ADMIN.md](PLANO-AREA-ADMIN.md).
 
-## Endereços
+## Trocar uma foto
 
-- Login personalizado: `/login`
-- Recuperação de senha: `/recuperar-senha`
-- Painel próprio do cliente: `/admin`
-- Sanity Studio para manutenção avançada: `/studio`
+1. Entre em `/admin/` e abra **Textos e fotos**.
+2. Escolha **Página inicial** (foto principal e foto de perfil), **Portfólio** (capas) ou **Marcas** (logotipos).
+3. Clique na imagem, envie o arquivo novo (JPEG, PNG ou WebP) e preencha a descrição da foto.
+4. Clique em **Save**.
 
-## Primeiro acesso
+## Mudar um texto
 
-O administrador cria ou convida cada pessoa individualmente no Supabase Auth. Não existe cadastro público. Além de possuir uma conta válida, o e-mail precisa constar em `ADMIN_EMAILS`, variável disponível somente no servidor.
+1. Abra **Textos e fotos** → **Página inicial**.
+2. Edite o título, a apresentação, o "Sobre mim", os contatos ou os textos para o Google.
+3. Clique em **Save**.
 
-## Publicar um trabalho
+## Portfólio, serviços e marcas
 
-1. Entre em `/admin`.
-2. Abra **Adicionar trabalho e imagem**.
-3. Informe título, categoria, descrição e link HTTPS.
-4. Escolha a posição e se o item ficará em destaque.
-5. Marque **Exibir no site** para publicar ou desmarque para manter oculto.
-6. Salve. O site é revalidado automaticamente.
+Cada lista permite adicionar, editar, reordenar (arrastando) e remover itens. Em **Seções visíveis** é possível esconder uma seção inteira do site.
 
-Os trabalhos existentes podem ser editados, reordenados, publicados, ocultados e excluídos. A exclusão exige confirmação adicional.
+## Quando a mudança aparece
 
-## Serviços, marcas e configurações
+Cada **Save** grava um commit na branch `main`. O workflow **Deploy GitHub Pages** reconstrói o site; em poucos minutos a alteração está no ar. Se o build falhar, o site anterior continua publicado e o erro aparece em Actions.
 
-As áreas **Serviços** e **Marcas** permitem criar, editar, ordenar, publicar, ocultar e excluir itens. Marcas aceitam logotipo com texto alternativo; uma marca vinculada a um trabalho não pode ser excluída.
+## Remover o acesso de alguém
 
-Em **Configurações do site** é possível editar identidade, contatos, redes sociais, mensagem do WhatsApp, SEO, visibilidade das seções, foto principal, foto de perfil e imagem de compartilhamento.
-
-## Como incluir imagens pelo Sanity
-
-No formulário de criação ou edição, escolha uma imagem JPEG, PNG, WebP ou AVIF de até 8 MB e escreva uma descrição objetiva no campo de texto alternativo. O arquivo passa pelo servidor Next.js, que confirma o usuário, valida o tipo real do arquivo e faz o upload para os Assets do Sanity. O navegador nunca recebe o token de escrita.
-
-## Recuperação e usuários
-
-Em `/recuperar-senha`, o cliente informa o e-mail. O Supabase envia um link PKCE que termina em `/redefinir-senha`. A mensagem de resposta não revela se um e-mail está cadastrado.
-
-Usuários devem ser criados ou convidados pelo administrador. Ao remover um cliente, exclua ou bloqueie a conta no Supabase e retire o e-mail de `ADMIN_EMAILS`.
-
-## Configuração do servidor
-
-- `NEXT_PUBLIC_SUPABASE_URL`: URL pública do projeto Supabase.
-- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`: chave publicável moderna.
-- `ADMIN_EMAILS`: e-mails autorizados, separados por vírgula.
-- `SANITY_API_WRITE_TOKEN`: token de escrita usado somente no servidor.
-
-Sem Supabase configurado, `/admin` apresenta a tela de preparação. Sem o token de escrita, o painel permanece em modo de leitura.
+Revogue o token da pessoa em github.com/settings/personal-access-tokens ou retire-a dos colaboradores do repositório.

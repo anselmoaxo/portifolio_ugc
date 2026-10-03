@@ -5,5 +5,5 @@ import { siteUrl, siteIndexable } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
   if (!siteIndexable) return { rules: { userAgent: "*", disallow: "/" } };
-  return { rules: { userAgent: "*", allow: "/", disallow: ["/api/"] }, sitemap: siteUrl("/sitemap.xml") };
+  return { rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/admin/"] }, sitemap: siteUrl("/sitemap.xml") };
 }

@@ -6,7 +6,7 @@ import { Metrics } from "@/components/sections/Metrics";
 import { Portfolio } from "@/components/portfolio/Portfolio";
 import { Services } from "@/components/sections/Services";
 import { SITE } from "@/config/site";
-import { getHomeContent } from "@/sanity/content";
+import { aboutContent, getHomeContent, heroContent } from "@/content";
 
 export default async function Home() {
   const content = await getHomeContent();
@@ -28,8 +28,8 @@ export default async function Home() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <Hero settings={content.settings} />
-      {content.settings.sectionVisibility.about !== false && <About profileImage={content.settings.profileImage} profileImageAlt={content.settings.profileImageAlt} />}
+      <Hero hero={heroContent} settings={content.settings} />
+      {content.settings.sectionVisibility.about !== false && <About about={aboutContent} />}
       {content.settings.sectionVisibility.metrics !== false && <Metrics />}
       {content.settings.sectionVisibility.services !== false && <Services items={content.services} />}
       {content.settings.sectionVisibility.portfolio !== false && <Portfolio items={content.portfolio} />}

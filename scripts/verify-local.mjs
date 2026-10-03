@@ -19,7 +19,14 @@ for (const path of pages) {
   }
   console.log("PASS", path);
 }
-for (const path of ["/admin/", "/login/", "/recuperar-senha/", "/redefinir-senha/", "/studio/", "/auth/callback/", "/api/draft/", "/api/draft/disable/", "/api/revalidate/"]) {
+const admin = await fetch(new URL("/admin/", base));
+assert.equal(admin.status, 200, "/admin/");
+const adminHtml = await admin.text();
+assert.match(adminHtml, /noindex/);
+assert.match(adminHtml, /@sveltia\/cms@/);
+assert.equal((await fetch(new URL("/admin/config.yml", base))).status, 200, "/admin/config.yml");
+console.log("PASS admin panel /admin/");
+for (const path of ["/login/", "/recuperar-senha/", "/redefinir-senha/", "/studio/", "/auth/callback/", "/api/draft/", "/api/draft/disable/", "/api/revalidate/"]) {
   const response = await fetch(new URL(path, base), { method: "GET" });
   assert.equal(response.status, 404, path);
   console.log("PASS disabled", path);

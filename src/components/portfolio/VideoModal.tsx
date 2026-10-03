@@ -38,7 +38,7 @@ export function VideoModal({ item, onClose }: { item: PortfolioVideo | null; onC
   }, [item, onClose]);
 
   if (!item) return null;
-  const publicationUrl = item.externalUrl ?? item.videoUrl;
+  const publicationUrl = item.externalUrl || item.videoUrl;
 
   return (
     <div className="fixed inset-0 z-[70] grid place-items-center bg-ink/85 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="video-title" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>

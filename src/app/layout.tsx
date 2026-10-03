@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SITE, siteUrl, siteIndexable } from "@/config/site";
 import { seoDescription, seoTitle } from "@/lib/seo";
-import { getSiteSettings } from "@/sanity/content";
+import { getSiteSettings } from "@/content";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
