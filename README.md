@@ -20,8 +20,6 @@ npm start
 
 O build exporta HTML, CSS, JavaScript e imagens para `out/`. Publique o conteudo dessa pasta em uma hospedagem estatica, sem servidor Next.js. `npm start` apenas serve os arquivos exportados para visualizacao local. Atualizacoes de conteudo exigem novo build.
 
-Painel `/admin`, autenticacao, Studio embutido, preview e rotas de webhook estao desativados, porque o GitHub Pages nao executa servidor. As entradas anteriores foram preservadas como `page.server.tsx` e `route.server.ts`, nomes que o Next.js nao registra como rotas.
-
 ## Area administrativa
 
 Fotos e textos sao editados no painel em `/admin/` (Sveltia CMS), que grava os arquivos de `src/content/` direto no GitHub; cada alteracao dispara o deploy. Configuracao e uso em [docs/PLANO-AREA-ADMIN.md](docs/PLANO-AREA-ADMIN.md).
@@ -31,7 +29,7 @@ Fotos e textos sao editados no painel em `/admin/` (Sveltia CMS), que grava os a
 - Nao reutilize tokens, remotes ou credenciais do projeto original; nunca publique arquivos `.env`.
 - Indexacao fica desativada por padrao. Para publicar, configure `NEXT_PUBLIC_SITE_URL=https://seu-dominio-real` e `NEXT_PUBLIC_SITE_INDEXABLE=true` antes do build.
 - Headers HTTP de seguranca devem ser configurados na hospedagem estatica. A politica em `src/lib/security-headers.ts` serve como referencia; o Next.js nao aplica headers aos arquivos exportados.
-- Guias de administracao e scripts de verificacao do servidor anterior sao referencias da implementacao arquivada.
+- O painel `/admin/` usa tokens do GitHub de cada pessoa; nenhum token fica no repositorio ou no site.
 
 ## Verificacoes
 
@@ -45,7 +43,7 @@ npm run security:secrets
 
 ### Overrides de seguranca
 
-Os overrides de js-yaml (3.15.2), smol-toml (1.8.0) e adm-zip (0.6.1) corrigem dependencias fixadas por ferramentas do Sanity. O override de uuid 11.1.1 fica restrito a typeid-js 1.2.0; seus usos de UUID v7 e conversao sao verificados separadamente. Revisar e remover cada override quando a dependencia de origem incorporar a correcao.
+Os overrides de brace-expansion, minimatch, postcss e sharp fixam versoes corrigidas de dependencias transitivas. Revisar e remover cada override quando a dependencia de origem incorporar a correcao.
 
 ## GitHub Pages
 

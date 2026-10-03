@@ -4,9 +4,6 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
-  # Sent by the Sanity webhook when content is published (docs/PLANO-AREA-ADMIN.md).
-  repository_dispatch:
-    types: [sanity-content-published]
 
 permissions:
   contents: read
@@ -45,11 +42,6 @@ jobs:
         env:
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}
           NEXT_PUBLIC_SITE_INDEXABLE: "true"
-          # Repository variables (not secrets): content is read from Sanity only
-          # when SITE_CMS_ENABLED is "true"; otherwise the local data is used.
-          SITE_CMS_ENABLED: ${{ vars.SITE_CMS_ENABLED || 'false' }}
-          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
-          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.SANITY_DATASET || 'production' }}
         run: npm run build
 
       - name: Upload Pages artifact

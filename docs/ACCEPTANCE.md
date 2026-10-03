@@ -1,7 +1,7 @@
 # Critérios de aceitação
 
 - `npm ci`, lint, typecheck, testes e build aprovados.
-- Site funcional sem variáveis Sanity e com CMS temporariamente indisponível.
+- Textos e fotos editáveis pelo painel `/admin/`, sem serviços externos além do GitHub.
 - Painel valida campos, URLs e textos alternativos.
 - Rascunhos não aparecem publicamente; itens ocultos não são consultados.
 - Preview e webhook rejeitam secrets/assinaturas inválidos.

@@ -1,4 +1,4 @@
-export function securityHeaders(development: boolean, cmsEnabled: boolean, indexable: boolean) {
+export function securityHeaders(development: boolean, indexable: boolean) {
   // Static HTML needs Next's inline hydration scripts. This is a baseline CSP,
   // not a nonce-based strict CSP; nonces would require request-time rendering.
   const csp = [
@@ -6,9 +6,9 @@ export function securityHeaders(development: boolean, cmsEnabled: boolean, index
     `script-src 'self' 'unsafe-inline'${development ? " 'unsafe-eval'" : ""}`,
     "script-src-attr 'none'",
     "style-src 'self' 'unsafe-inline'",
-    `img-src 'self' data: blob:${cmsEnabled ? " https://cdn.sanity.io" : ""}`,
+    "img-src 'self' data: blob:",
     "font-src 'self' data:",
-    `connect-src 'self'${development ? " ws://localhost:* ws://127.0.0.1:*" : ""}${cmsEnabled ? " https://*.sanity.io wss://*.sanity.io https://*.supabase.co wss://*.supabase.co" : ""}`,
+    `connect-src 'self'${development ? " ws://localhost:* ws://127.0.0.1:*" : ""}`,
     "frame-src 'self' https://www.instagram.com",
     "frame-ancestors 'self'",
     "object-src 'none'",
@@ -26,7 +26,3 @@ export function securityHeaders(development: boolean, cmsEnabled: boolean, index
   ];
 }
 
-export function sanityImagePatterns(enabled: boolean, project = "", dataset = "") {
-  if (!enabled || !/^[a-z0-9]+$/.test(project) || !/^[a-zA-Z0-9_-]+$/.test(dataset)) return [];
-  return [{ protocol: "https" as const, hostname: "cdn.sanity.io", pathname: `/images/${project}/${dataset}/**` }];
-}

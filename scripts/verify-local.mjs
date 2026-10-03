@@ -43,6 +43,6 @@ const robots = await (await fetch(new URL("/robots.txt", base))).text();
 assert.match(robots, indexable ? /Allow: \/(?:\r?\n|$)/ : /Disallow: \/(?:\r?\n|$)/);
 for (const path of ["/og-image.png", "/portfolio/Portfolio-Priscila.pdf"]) assert.equal((await fetch(new URL(path, base))).status, 200, path);
 const remote = new URL("/_next/image", base);
-remote.search = new URLSearchParams({ url: "https://cdn.sanity.io/images/other/production/example.jpg", w: "640", q: "75" }).toString();
+remote.search = new URLSearchParams({ url: "https://images.example.com/example.jpg", w: "640", q: "75" }).toString();
 assert.equal((await fetch(remote)).status, 404);
 console.log("PASS metadata, assets and remote-image rejection");
