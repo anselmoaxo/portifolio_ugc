@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "video-ugc",
+      "name": "Vídeos UGC",
+      "description": "Produção de vídeos com apresentação, uso e experiência com produtos.",
+      "icon": "video"
+    },
+    {
+      "id": "fotografia-ugc",
+      "name": "Fotografia UGC",
+      "description": "Fotografias de produtos em composições relacionadas à rotina e ao autocuidado.",
+      "icon": "camera"
+    }
+  ]
+}

@@ -28,3 +28,4 @@ test("fallback local possui conteúdo essencial", () => {
   assert.ok(partnerBrands.length > 0);
 });
 
+

@@ -65,3 +65,6 @@ temp/
 
 # downloads cache
 /public/images/instagram/posts_metadata.json
+
+# Sanity CLI runtime
+.sanity/

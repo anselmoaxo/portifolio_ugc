@@ -1,9 +1,10 @@
 import { ArrowDownRight, ArrowUpRight, Download, FileText, Instagram, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { resolveMediaPath } from "@/lib/asset-path";
+import type { HeroContent } from "@/content";
 import type { SiteSettings } from "@/types/cms";
 
-export function Hero({ settings }: { settings: SiteSettings }) {
+export function Hero({ hero, settings }: { hero: HeroContent; settings: SiteSettings }) {
   return (
     <section id="inicio" className="relative min-h-screen overflow-hidden bg-cream pt-28">
       <div className="pointer-events-none absolute -left-32 top-36 size-[34rem] rounded-full bg-rose-200/25 blur-3xl" />
@@ -11,13 +12,13 @@ export function Hero({ settings }: { settings: SiteSettings }) {
       <div className="container-shell grid min-h-[calc(100vh-7rem)] items-center gap-12 py-12 lg:grid-cols-[1.05fr_.95fr] lg:py-16">
         <div className="relative z-10 min-w-0">
           <p className="eyebrow flex items-center gap-2 text-rose-700">
-            <Sparkles size={14} /> Influenciadora &amp; criadora de conteúdo UGC
+            <Sparkles size={14} /> {hero.eyebrow}
           </p>
           <h1 className="mt-6 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,7rem)] leading-[.88] tracking-[-.05em] text-ink">
-            Beleza real, conteúdo <span className="italic text-rose-700">autêntico</span>
+            {hero.title}{hero.titleHighlight && <> <span className="italic text-rose-700">{hero.titleHighlight}</span></>}
           </h1>
           <p className="mt-7 max-w-xl text-base leading-7 text-muted md:mt-8 md:text-lg md:leading-8">
-            Transformo produtos de beleza, skincare e bem-estar em conteúdos que conversam de verdade com o público. Naturais, envolventes e feitos para gerar conexão.
+            {hero.text}
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap">
             <a href="#portfolio" className="button-primary">
@@ -55,14 +56,14 @@ export function Hero({ settings }: { settings: SiteSettings }) {
             </a>
           </div>
           <p className="mt-10 max-w-xl border-l-2 border-rose-400 pl-4 text-sm leading-6 text-muted">
-            Conteúdo sobre beleza, skincare, cabelos e autocuidado, apresentado com clareza e proximidade.
+            {hero.note}
           </p>
         </div>
         <div className="relative mx-auto w-full max-w-[460px] lg:mr-0">
           <div className="relative ml-auto aspect-[3/4] w-[90%] overflow-hidden rounded-[10rem_10rem_2rem_2rem] bg-rose-100 shadow-[0_30px_80px_rgba(88,58,47,.18)]">
             <Image
-              src={resolveMediaPath(settings.heroImage)}
-              alt={settings.heroImageAlt || "Ambiente de gravação UGC com smartphone, produtos de beleza e iluminação natural"}
+              src={resolveMediaPath(hero.image)}
+              alt={hero.imageAlt}
               fill
               priority
               sizes="(max-width: 1024px) 88vw, 40vw"

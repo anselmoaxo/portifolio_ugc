@@ -1,0 +1,125 @@
+# Painel administrativo (Sveltia CMS). Cada "Publicar" grava um commit na branch
+# main e o workflow "Deploy GitHub Pages" publica o site em alguns minutos.
+backend:
+  name: github
+  repo: anselmoaxo/portifolio_ugc
+  branch: main
+  commit_messages:
+    update: "conteúdo: atualiza {{slug}} pelo painel"
+    uploadMedia: "conteúdo: envia {{path}} pelo painel"
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: paginas
+    label: Textos e fotos
+    files:
+      - name: inicio
+        label: Página inicial
+        file: src/content/site.json
+        format: json
+        fields:
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Frase acima do título, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: titleHighlight, label: Palavra em destaque no título, widget: string, required: false }
+              - { name: text, label: Texto de apresentação, widget: text }
+              - { name: note, label: Nota abaixo dos botões, widget: text, required: false }
+              - { name: image, label: Foto principal, widget: image }
+              - { name: imageAlt, label: Descrição da foto principal, widget: string, hint: "Descreva a foto para quem usa leitor de tela." }
+          - name: about
+            label: Sobre mim
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: paragraphs, label: Parágrafos, widget: list, field: { name: paragraph, label: Parágrafo, widget: text } }
+              - { name: quote, label: Frase em destaque, widget: text }
+              - { name: image, label: Foto de perfil, widget: image }
+              - { name: imageAlt, label: Descrição da foto de perfil, widget: string }
+          - name: contact
+            label: Contato
+            widget: object
+            fields:
+              - { name: instagram, label: Link do Instagram, widget: string }
+              - { name: instagramHandle, label: Usuário do Instagram, widget: string, hint: "Exemplo: @blogdapriscilaa" }
+              - { name: email, label: E-mail, widget: string }
+              - { name: whatsapp, label: WhatsApp, widget: string, hint: "Somente números com país e DDD, por exemplo 5511999999999.", pattern: ['^\d{12,13}$', "Use 12 ou 13 números, sem espaços."] }
+              - { name: tiktok, label: Link do TikTok, widget: string, required: false }
+              - { name: whatsappMessage, label: Mensagem padrão do WhatsApp, widget: text }
+          - name: seo
+            label: Google e redes sociais
+            widget: object
+            fields:
+              - { name: title, label: Título da página, widget: string, hint: "Até 70 caracteres." }
+              - { name: description, label: Descrição, widget: text, hint: "Entre 70 e 170 caracteres." }
+              - { name: image, label: Imagem de compartilhamento, widget: image, hint: "1200 x 630 pixels." }
+          - name: sections
+            label: Seções visíveis
+            widget: object
+            fields:
+              - { name: about, label: Sobre mim, widget: boolean }
+              - { name: metrics, label: Métricas, widget: boolean }
+              - { name: services, label: Serviços, widget: boolean }
+              - { name: portfolio, label: Portfólio, widget: boolean }
+              - { name: brands, label: Marcas, widget: boolean }
+              - { name: contact, label: Contato, widget: boolean }
+
+      - name: portfolio
+        label: Portfólio
+        file: src/content/portfolio.json
+        format: json
+        fields:
+          - name: items
+            label: Trabalhos
+            label_singular: Trabalho
+            widget: list
+            summary: "{{fields.title}} ({{fields.brand}})"
+            fields:
+              - { name: id, label: Identificador, widget: string, hint: "Qualquer código único, por exemplo o número do trabalho." }
+              - { name: title, label: Título, widget: string }
+              - { name: brand, label: Marca, widget: string }
+              - { name: category, label: Categoria, widget: select, options: [Beleza, Moda, Lifestyle, Casa, Alimentação, Serviços, Tecnologia] }
+              - { name: format, label: Formato, widget: string, default: Reels }
+              - { name: thumbnail, label: Foto de capa, widget: image }
+              - { name: alt, label: Descrição da foto, widget: string, required: false }
+              - { name: videoUrl, label: Link do vídeo, widget: string }
+              - { name: source, label: Origem do vídeo, widget: select, default: instagram, options: [instagram, tiktok, youtube, vimeo, external] }
+              - { name: accent, label: Cor de destaque, widget: color, default: "#d8a99a" }
+              - { name: featured, label: Destaque, widget: boolean, required: false }
+              - { name: externalUrl, label: Link da publicação, widget: string, required: false }
+
+      - name: servicos
+        label: Serviços
+        file: src/content/services.json
+        format: json
+        fields:
+          - name: items
+            label: Serviços
+            label_singular: Serviço
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: id, label: Identificador, widget: string }
+              - { name: name, label: Nome, widget: string }
+              - { name: description, label: Descrição, widget: text }
+              - { name: icon, label: Ícone, widget: select, options: [{ label: Vídeo, value: video }, { label: Câmera, value: camera }, { label: Brilho, value: sparkles }] }
+
+      - name: marcas
+        label: Marcas
+        file: src/content/brands.json
+        format: json
+        fields:
+          - name: items
+            label: Marcas
+            label_singular: Marca
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: id, label: Identificador, widget: string }
+              - { name: name, label: Nome, widget: string, required: false }
+              - { name: image, label: Logotipo, widget: image }
+              - { name: alt, label: Descrição do logotipo, widget: string, required: false, hint: "Use quando a marca não tiver nome." }

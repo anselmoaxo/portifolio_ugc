@@ -3,6 +3,7 @@ import Image from "next/image";
 import { resolveMediaPath } from "@/lib/asset-path";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { AboutContent } from "@/content";
 
 const highlights = [
   { label: "Beleza", icon: "✨" },
@@ -11,15 +12,15 @@ const highlights = [
   { label: "Autocuidado", icon: "🧖" },
 ];
 
-export function About({ profileImage = "/images/foto_sobremin.jpeg", profileImageAlt }: { profileImage?: string; profileImageAlt?: string }) {
+export function About({ about }: { about: AboutContent }) {
   return (
     <section id="sobre" className="section-padding bg-white">
       <div className="container-shell grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sand shadow-[0_20px_60px_rgba(88,58,47,.12)]">
             <Image
-              src={resolveMediaPath(profileImage)}
-              alt={profileImageAlt || "Priscila Almeida, criadora de conteúdo UGC"}
+              src={resolveMediaPath(about.image)}
+              alt={about.imageAlt}
               fill
               sizes="(max-width: 1024px) 90vw, 38vw"
               loading="lazy"
@@ -29,21 +30,13 @@ export function About({ profileImage = "/images/foto_sobremin.jpeg", profileImag
           </div>
         </Reveal>
         <Reveal>
-          <SectionHeading eyebrow="Sobre mim" title="Olá! Sou Priscila Almeida" />
+          <SectionHeading eyebrow="Sobre mim" title={about.title} />
           <div className="mt-8 space-y-5 text-base leading-8 text-muted md:text-lg">
-            <p>
-              Tenho 39 anos, sou de Guarulhos, São Paulo, e sou apaixonada por tudo relacionado ao universo da beleza, do skincare, dos cabelos e do autocuidado.
-            </p>
-            <p>
-              Quero mostrar à minha comunidade como cuidar da beleza de maneira prática e sem complicação. Minha página é um espaço onde compartilho dicas, tutoriais e resenhas de produtos para ajudar minha audiência a se sentir mais confiante.
-            </p>
-            <p>
-              Com uma base sólida de seguidores engajados nas redes sociais, sou uma influenciadora digital confiável e respeitada, com uma abordagem autêntica e apaixonada pelo assunto.
-            </p>
+            {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <div className="mt-8 flex gap-4 border-l-2 border-rose-400 pl-5">
             <Quote className="shrink-0 text-rose-700" size={22} />
-            <p className="font-display text-xl italic leading-7 text-brown">Produzo conteúdo digital com uma abordagem autêntica, próxima e apaixonada pelo assunto.</p>
+            <p className="font-display text-xl italic leading-7 text-brown">{about.quote}</p>
           </div>
           <div className="mt-6 flex flex-wrap gap-2">
             {highlights.map((h) => (

@@ -44,6 +44,6 @@ export type HomeContent = {
   portfolio: PortfolioVideo[];
   services: ServiceItem[];
   brands: BrandItem[];
-  source: "sanity" | "local";
+  source: "local";
 };
 

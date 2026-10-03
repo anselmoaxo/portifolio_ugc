@@ -93,7 +93,7 @@ export function Portfolio({ items }: { items: PortfolioVideo[] }) {
                   {item.brand} &middot; {item.format}
                 </p>
                 <a
-                  href={item.externalUrl ?? item.videoUrl}
+                  href={item.externalUrl || item.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 hover:text-rose-400"
