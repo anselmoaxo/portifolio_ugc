@@ -15,6 +15,7 @@ export function WhatsAppButton({ settings }: { settings: SiteSettings }) {
       target={configured ? "_blank" : undefined}
       rel={configured ? "noreferrer" : undefined}
       aria-label="Conversar com Priscila pelo WhatsApp"
+      data-umami-event="Clique no WhatsApp"
     >
       <MessageCircle size={24} />
     </a>

@@ -68,6 +68,8 @@ function DiscountCard({ discount, featured = false }: { discount: Discount; feat
           <button
             type="button"
             onClick={copyCoupon}
+            data-umami-event="Copiou cupom"
+            data-umami-event-marca={discount.brand}
             className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-rose-700 px-4 text-xs font-bold text-rose-700 transition-colors hover:bg-rose-700 hover:text-white"
             aria-label={`Copiar cupom ${discount.coupon}`}
           >
@@ -81,6 +83,8 @@ function DiscountCard({ discount, featured = false }: { discount: Discount; feat
         href={discount.url}
         target="_blank"
         rel="noopener noreferrer sponsored"
+        data-umami-event="Clique no desconto"
+        data-umami-event-marca={discount.brand}
         className="button-primary mt-4 min-h-12 w-full text-center"
       >
         {discount.category === "Favoritos" && !discount.coupon
