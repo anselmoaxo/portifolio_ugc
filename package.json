@@ -30,7 +30,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
-    "sharp": "0.35.4",
+    "sharp": "0.35.5",
+    "source-map-js": "1.2.2",
     "tailwindcss": "^4",
     "tsx": "^4.23.11",
     "typescript": "^5"
@@ -39,6 +40,7 @@
     "brace-expansion": "5.0.12",
     "minimatch": "10.2.6",
     "postcss": "8.5.24",
-    "sharp": "0.35.4"
+    "sharp": "0.35.5",
+    "source-map-js": "1.2.2"
   }
 }
