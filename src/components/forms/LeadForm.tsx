@@ -19,9 +19,18 @@ const steps = [
 type Field = keyof Omit<LeadData, "website">;
 type Status = "editing" | "sending" | "sent" | "failed";
 
-const stepFields: Field[][] = [["name", "company"], ["contentType"], ["message", "privacy"]];
+const stepFields: Field[][] = [["name", "company", "whatsapp"], ["contentType"], ["message", "privacy"]];
 
-const emptyLead: LeadData = { name: "", company: "", contentType: "", message: "", privacy: false };
+const emptyLead: LeadData = { name: "", company: "", whatsapp: "", contentType: "", message: "", privacy: false };
+
+// (11) 98765-4321 enquanto digita.
+function formatPhone(value: string) {
+  const d = value.replace(/\D/g, "").slice(0, 11);
+  if (d.length <= 2) return d.length ? `(${d}` : "";
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
 
 function normalize(value: string, limit: number) {
   return value.replace(/[<>]/g, "").replace(/\s+/g, " ").trim().slice(0, limit);
@@ -31,6 +40,7 @@ function validate(data: LeadData, fields: Field[]) {
   const errors: Partial<Record<Field, string>> = {};
   if (fields.includes("name") && !data.name) errors.name = "Informe seu nome.";
   if (fields.includes("company") && !data.company) errors.company = "Informe a empresa ou marca.";
+  if (fields.includes("whatsapp") && !/^\d{10,13}$/.test(data.whatsapp.replace(/\D/g, ""))) errors.whatsapp = "Informe um WhatsApp com DDD.";
   if (fields.includes("contentType") && !data.contentType) errors.contentType = "Escolha o tipo de conteúdo.";
   if (fields.includes("message") && !data.message) errors.message = "Escreva uma mensagem.";
   if (fields.includes("privacy") && !data.privacy) errors.privacy = "Aceite a política de privacidade para continuar.";
@@ -51,6 +61,7 @@ export function LeadForm({ whatsapp }: { whatsapp: string }) {
   const clean: LeadData = {
     name: normalize(lead.name, 100),
     company: normalize(lead.company, 100),
+    whatsapp: normalize(lead.whatsapp, 20),
     contentType: normalize(lead.contentType, 60),
     message: normalize(lead.message, 1000),
     privacy: lead.privacy,
@@ -198,6 +209,11 @@ export function LeadForm({ whatsapp }: { whatsapp: string }) {
                   <label htmlFor="company">Empresa ou marca *</label>
                   <input className="form-field" id="company" name="company" value={lead.company} onChange={(e) => update("company", e.target.value)} maxLength={100} autoComplete="organization" placeholder="Nome da marca" aria-invalid={!!errors.company} aria-describedby={errors.company ? "company-error" : undefined} />
                   <FieldError id="company-error" text={errors.company} />
+                </div>
+                <div className="md:col-span-2">
+                  <label htmlFor="whatsapp">Seu WhatsApp *</label>
+                  <input className="form-field" id="whatsapp" name="whatsapp" type="tel" inputMode="tel" value={lead.whatsapp} onChange={(e) => update("whatsapp", formatPhone(e.target.value))} maxLength={16} autoComplete="tel-national" placeholder="(11) 98765-4321" aria-invalid={!!errors.whatsapp} aria-describedby={errors.whatsapp ? "whatsapp-error" : undefined} />
+                  <FieldError id="whatsapp-error" text={errors.whatsapp} />
                 </div>
               </div>
             )}

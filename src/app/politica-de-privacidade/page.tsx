@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
         <h1 className="mt-5 font-display text-5xl text-ink md:text-7xl">Política de privacidade</h1>
         <p className="mt-6 text-muted">Última atualização: outubro de 2026.</p>
         <div className="mt-12 space-y-10 leading-8 text-muted">
-          <PolicySection title="1. Dados coletados">O formulário solicita nome, empresa ou marca, tipo de conteúdo e mensagem. Esses dados são fornecidos voluntariamente para facilitar o contato sobre uma possível parceria.</PolicySection>
+          <PolicySection title="1. Dados coletados">O formulário solicita nome, empresa ou marca, WhatsApp, tipo de conteúdo e mensagem. Esses dados são fornecidos voluntariamente para facilitar o contato sobre uma possível parceria.</PolicySection>
           <PolicySection title="2. Finalidade">As informações são utilizadas exclusivamente para analisar e responder ao contato comercial, preparar propostas e dar continuidade à conversa solicitada.</PolicySection>
           <PolicySection title="3. Envio e armazenamento">Ao enviar o formulário, os dados são transmitidos por conexão segura a um serviço de automação (n8n), que entrega a mensagem no WhatsApp da Priscila. Este site não possui banco de dados. Se o envio automático falhar, você pode continuar pelo WhatsApp com a mensagem já preenchida; nesse caso, ela só é enviada quando você confirma no aplicativo ou no WhatsApp Web.</PolicySection>
           <PolicySection title="4. Compartilhamento">A mensagem entregue no WhatsApp passa a ser processada pelo WhatsApp/Meta conforme as políticas desse serviço. Este site não vende nem armazena os dados preenchidos.</PolicySection>
