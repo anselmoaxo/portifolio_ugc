@@ -43,7 +43,7 @@ npm run security:secrets
 
 ### Overrides de seguranca
 
-Os overrides de brace-expansion, minimatch, postcss e sharp fixam versoes corrigidas de dependencias transitivas. Revisar e remover cada override quando a dependencia de origem incorporar a correcao.
+Os overrides de brace-expansion, minimatch, postcss, sharp e source-map-js fixam versoes corrigidas de dependencias transitivas. Revisar e remover cada override quando a dependencia de origem incorporar a correcao.
 
 ## GitHub Pages
 

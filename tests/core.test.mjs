@@ -3,6 +3,7 @@ import test from "node:test";
 import { siteUrl } from "../src/config/site.ts";
 import { whatsappUrl } from "../src/config/contact.ts";
 import { buildLeadMessage } from "../src/lib/whatsapp.ts";
+import { sendLead } from "../src/lib/lead.ts";
 import { portfolioVideos } from "../src/data/portfolio.ts";
 import { partnerBrands } from "../src/data/brands.ts";
 
@@ -29,3 +30,19 @@ test("fallback local possui conteúdo essencial", () => {
 });
 
 
+
+const lead = { name: "Ana", company: "Marca", contentType: "Reels", message: "Campanha", privacy: true };
+const reply = (status, body) => async () => new Response(JSON.stringify(body), { status });
+
+test("sendLead envia os campos esperados pelo webhook", async () => {
+  let sent;
+  const result = await sendLead(lead, async (_url, init) => { sent = JSON.parse(init.body); return new Response('{"ok":true}'); });
+  assert.equal(result, "sent");
+  assert.deepEqual(sent, { nome: "Ana", empresa: "Marca", tipo_conteudo: "Reels", mensagem: "Campanha", website: "" });
+});
+
+test("sendLead distingue validação de falha", async () => {
+  assert.equal(await sendLead(lead, reply(400, { ok: false })), "invalid");
+  assert.equal(await sendLead(lead, reply(500, {})), "failed");
+  assert.equal(await sendLead(lead, async () => { throw new Error("rede"); }), "failed");
+});

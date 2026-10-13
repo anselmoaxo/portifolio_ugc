@@ -82,6 +82,21 @@ label { display: block; margin-bottom: .5rem; font-size: .72rem; font-weight: 80
 select.form-field { color-scheme: dark; }
 select.form-field option { background: #292320; color: #fff; }
 
+.lead-card { position: relative; border: 1px solid rgba(255,255,255,.12); border-radius: 1.75rem; background: linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.03)); padding: clamp(1.5rem, 4vw, 2.75rem); box-shadow: 0 30px 80px -40px rgba(0,0,0,.55); backdrop-filter: blur(6px); }
+.lead-step { display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); padding: .35rem .85rem .35rem .4rem; font-size: .72rem; font-weight: 700; color: rgba(255,255,255,.5); transition: all .25s ease; }
+.lead-step-dot { display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 999px; background: rgba(255,255,255,.1); font-size: .68rem; }
+.lead-step-active { border-color: rgba(229,197,187,.6); color: white; background: rgba(255,255,255,.06); }
+.lead-step-active .lead-step-dot { background: #f8f3ed; color: #292320; }
+.lead-step-done { color: rgba(255,255,255,.75); }
+.lead-step-done .lead-step-dot { background: #e5c5bb; color: #292320; }
+.lead-chip { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: center; gap: .4rem; border: 1px solid rgba(255,255,255,.16); border-radius: 1rem; background: rgba(255,255,255,.05); padding: .75rem 1rem; font-size: .85rem; font-weight: 600; color: rgba(255,255,255,.85); transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease; }
+.lead-chip:hover { border-color: rgba(229,197,187,.6); background: rgba(255,255,255,.1); transform: translateY(-2px); }
+.lead-chip:focus-visible, .lead-ghost:focus-visible { outline: 2px solid #e5c5bb; outline-offset: 2px; }
+.lead-chip-selected { border-color: #f8f3ed; background: #f8f3ed; color: #292320; }
+.lead-chip-selected:hover { background: white; }
+.lead-ghost { display: inline-flex; min-height: 3rem; align-items: center; gap: .5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); padding: .75rem 1.2rem; font-size: .75rem; font-weight: 800; letter-spacing: .035em; color: rgba(255,255,255,.85); transition: background-color .2s ease, border-color .2s ease; }
+.lead-ghost:hover { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.06); }
+
 .case-visual::after { content: ""; position: absolute; width: 18rem; height: 18rem; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; right: -3rem; top: -6rem; }
 .case-rose { background: linear-gradient(145deg, #cf9989, #9d6253); }
 .case-sand { background: linear-gradient(145deg, #c7b19a, #8c7464); }
