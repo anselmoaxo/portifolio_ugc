@@ -5,6 +5,7 @@ export function buildLeadMessage(data: LeadData) {
 
 Meu nome é: ${data.name}
 Empresa ou marca: ${data.company}
+WhatsApp: ${data.whatsapp}
 Tipo de conteúdo: ${data.contentType}
 Mensagem: ${data.message}
 

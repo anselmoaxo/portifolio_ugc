@@ -27,6 +27,7 @@ export type PortfolioVideo = {
 export type LeadData = {
   name: string;
   company: string;
+  whatsapp: string;
   contentType: string;
   message: string;
   privacy: boolean;

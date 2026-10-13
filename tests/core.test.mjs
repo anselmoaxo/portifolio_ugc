@@ -18,7 +18,7 @@ test("whatsappUrl codifica a mensagem", () => {
 });
 
 test("mensagem do formulário contém os campos informados", () => {
-  const message = buildLeadMessage({ name: "Ana", company: "Marca", contentType: "Vídeo", message: "Campanha", privacy: true });
+  const message = buildLeadMessage({ name: "Ana", company: "Marca", whatsapp: "(11) 98765-4321", contentType: "Vídeo", message: "Campanha", privacy: true });
   assert.match(message, /Ana/);
   assert.match(message, /Marca/);
   assert.match(message, /Campanha/);
@@ -31,14 +31,14 @@ test("fallback local possui conteúdo essencial", () => {
 
 
 
-const lead = { name: "Ana", company: "Marca", contentType: "Reels", message: "Campanha", privacy: true };
+const lead = { name: "Ana", company: "Marca", whatsapp: "(11) 98765-4321", contentType: "Reels", message: "Campanha", privacy: true };
 const reply = (status, body) => async () => new Response(JSON.stringify(body), { status });
 
 test("sendLead envia os campos esperados pelo webhook", async () => {
   let sent;
   const result = await sendLead(lead, async (_url, init) => { sent = JSON.parse(init.body); return new Response('{"ok":true}'); });
   assert.equal(result, "sent");
-  assert.deepEqual(sent, { nome: "Ana", empresa: "Marca", tipo_conteudo: "Reels", mensagem: "Campanha", website: "" });
+  assert.deepEqual(sent, { nome: "Ana", empresa: "Marca", whatsapp: "(11) 98765-4321", tipo_conteudo: "Reels", mensagem: "Campanha", website: "" });
 });
 
 test("sendLead distingue validação de falha", async () => {

@@ -15,6 +15,7 @@ export async function sendLead(data: LeadData, fetchImpl: typeof fetch = fetch, 
       body: JSON.stringify({
         nome: data.name,
         empresa: data.company,
+        whatsapp: data.whatsapp,
         tipo_conteudo: data.contentType,
         mensagem: data.message,
         website: data.website ?? "",
